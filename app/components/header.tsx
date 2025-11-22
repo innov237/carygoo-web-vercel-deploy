@@ -1,63 +1,130 @@
-
+"use client";
 import Image from 'next/image';
-import React from 'react';
-const Header: React.FC = () => {
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react'; 
+
+const HeaderWhite: React.FC = () => {
+  // État pour gérer l'ouverture/fermeture du menu mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Bascule l'état du menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <header className="fixed z-20  w-full">
-      <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
+    // Fixed Header sur fond blanc
+    <header className="fixed z-50 w-full">
+      <nav className="bg-white border-b border-gray-200 py-4 shadow-sm">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+          
+          {/* Logo et Nom de la Marque */}
           <a href="#" className="flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt="Landwind Logo"
-              width={36}
-              height={36}
-              className="h-6 mr-3 sm:h-9 rounded-full"
-            />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Carygoo</span>
-          </a>
-          <div className="flex items-center lg:order-2">
-            <div className="hidden mt-2 mr-4 sm:inline-block">
-              <a className="github-button" href="https://github.com/themesberg/landwind" data-size="large" data-icon="octicon-star" data-show-count="true" aria-label="Star themesberg/landwind on GitHub">Star</a>
+            {/* L'icône est toujours bien visible avec un fond rouge */}
+            <div className="p-0.5 mr-3">
+              <Image
+                src="/images/logo.png" 
+                alt="Carygoo Logo"
+                width={36}
+                height={36}
+                className="h-7 w-7 rounded-full sm:h-8 sm:w-8"
+              />
             </div>
-            <a href="https://themesberg.com/product/tailwind-css/landing-page" className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Download</a>
-            <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+            <span className="self-center text-xl font-extrabold whitespace-nowrap text-gray-900">Carygoo</span>
+          </a>
+          
+          {/* Boutons d'Action (Desktop) */}
+          <div className="flex items-center lg:order-2 space-x-3">
+            
+            {/* Bouton CTA - Couleur d'accentuation Rouge */}
+            <a href="#" className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5">
+              Démarrer l'Essai
+            </a>
+
+            {/* Bouton de bascule du menu mobile (Affiché uniquement sur petit écran) */}
+            <button 
+              onClick={toggleMenu}
+              type="button" 
+              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              aria-expanded={isMenuOpen}
+            >
               <span className="sr-only">Open main menu</span>
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path>
-              </svg>
-              <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
-              </svg>
+              {/* Icônes noires sur fond blanc */}
+              {isMenuOpen ? (
+                <X className="w-6 h-6 text-gray-900" />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-900" />
+              )}
             </button>
           </div>
-          <div className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+          
+          {/* Menu de Navigation (Desktop) */}
+          <div className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1">
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
+                {/* Liens Noirs, Rouge au survol */}
+                <a href="#" className="block py-2 pl-3 pr-4 text-gray-900 hover:text-red-600 lg:hover:text-red-600 lg:p-0 transition-colors duration-200" aria-current="page">Accueil</a>
               </li>
               <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</a>
+                <a href="#" className="block py-2 pl-3 pr-4 text-gray-600 hover:text-red-600 lg:hover:text-red-600 lg:p-0 transition-colors duration-200">Fonctionnalités</a>
               </li>
               <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
+                <a href="#" className="block py-2 pl-3 pr-4 text-gray-600 hover:text-red-600 lg:hover:text-red-600 lg:p-0 transition-colors duration-200">Tarifs</a>
               </li>
               <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Features</a>
+                <a href="#" className="block py-2 pl-3 pr-4 text-gray-600 hover:text-red-600 lg:hover:text-red-600 lg:p-0 transition-colors duration-200">Blog</a>
               </li>
               <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                <a href="#" className="block py-2 pl-3 pr-4 text-gray-600 hover:text-red-600 lg:hover:text-red-600 lg:p-0 transition-colors duration-200">Contact</a>
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* Menu Mobile (S'ouvre depuis la droite - Fond Blanc) */}
+        <div 
+          className={`
+            fixed top-0 right-0 h-screen w-full bg-white lg:hidden transition-transform duration-300 ease-in-out z-40
+            ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+          `}
+        >
+          <div className="flex justify-end p-4">
+            {/* Bouton de fermeture */}
+             <button 
+              onClick={toggleMenu}
+              type="button" 
+              className="p-2 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-lg"
+            >
+              <X className="w-8 h-8 text-gray-900" />
+            </button>
+          </div>
+
+          <ul className="flex flex-col p-4 space-y-2">
+            <li>
+              <a href="#" className="block px-4 py-3 text-2xl font-semibold text-red-600 hover:bg-gray-100 rounded-lg transition-colors" onClick={toggleMenu}>Accueil</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-3 text-2xl font-semibold text-gray-900 hover:text-red-600 hover:bg-gray-100 rounded-lg transition-colors" onClick={toggleMenu}>Fonctionnalités</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-3 text-2xl font-semibold text-gray-900 hover:text-red-600 hover:bg-gray-100 rounded-lg transition-colors" onClick={toggleMenu}>Tarifs</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-3 text-2xl font-semibold text-gray-900 hover:text-red-600 hover:bg-gray-100 rounded-lg transition-colors" onClick={toggleMenu}>Blog</a>
+            </li>
+            <li>
+              <a href="#" className="block px-4 py-3 text-2xl font-semibold text-gray-900 hover:text-red-600 hover:bg-gray-100 rounded-lg transition-colors" onClick={toggleMenu}>Contact</a>
+            </li>
+            <li className="pt-6">
+                 <a href="#" className="block w-full text-center text-white bg-red-600 hover:bg-red-700 font-bold rounded-lg text-lg px-4 py-3 focus:ring-4 focus:ring-red-300 transition-colors" onClick={toggleMenu}>
+                    Démarrer l'Essai Gratuit
+                </a>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
   );
 };
 
-export default Header;
+export default HeaderWhite;

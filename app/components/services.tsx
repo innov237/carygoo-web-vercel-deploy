@@ -11,17 +11,41 @@ interface Service {
 }
 
 const SERVICES: Service[] = [
-    { title: "E-commerce", description: "Solutions logistiques complètes et intégrées pour votre boutique en ligne." },
-    { title: "Express Logistics", description: "Livraison ultra-rapide et sécurisée pour les envois urgents, disponible 24/7." },
-    { title: "Warehousing", description: "Stockage flexible et gestion optimisée des inventaires dans des entrepôts modernes." },
-    { title: "Freight Forwarding", description: "Transport international sans effort (maritime, aérien, terrestre)." },
-    { title: "Industrial Solutions", description: "Logistique sur mesure pour les projets industriels complexes." },
-    { title: "Cold Chain Logistics", description: "Transport à température contrôlée pour produits sensibles." },
-    { title: "Customs Clearance", description: "Dédouanement rapide et conforme pour vos envois internationaux." },
-    { title: "Assurance Marchandises", description: "Protection complète contre les pertes ou dommages." },
-    { title: "Cross-Docking", description: "Transbordement pour une distribution rapide et rentable." },
-    { title: "Optimisation de Flotte", description: "Algorithmes IA pour améliorer les itinéraires de livraison." },
+    {
+        title: "Restaurants",
+        description: "Prise en charge complète des livraisons de repas, du dispatch à la preuve de livraison."
+    },
+    {
+        title: "Supermarchés & Épiceries",
+        description: "Gestion rapide et fiable des livraisons de produits alimentaires et de courses."
+    },
+    {
+        title: "E-commerce",
+        description: "Livraison locale et last-mile pour boutiques en ligne et plateformes marchandes."
+    },
+    {
+        title: "Retail / Boutiques",
+        description: "Solution de livraison pour magasins de vêtements, beauté, accessoires et plus."
+    },
+    {
+        title: "Pharmacies & Santé",
+        description: "Livraison sécurisée de médicaments et produits médicaux sensibles."
+    },
+    {
+        title: "Magasins d'Électronique",
+        description: "Transport sécurisé et suivi en temps réel pour matériel et appareils électroniques."
+    },
+    {
+        title: "Entreprises de BTP",
+        description: "Livraison rapide de matériaux, outils et équipements de chantier avec suivi en temps réel."
+    },
+    {
+        title: "Dark Stores & Entrepôts Urbains",
+        description: "Orchestration des livraisons rapides depuis vos hubs logistiques."
+    }
 ];
+
+
 
 const ServiceCoverage: React.FC = () => {
     const CARDS_PER_PAGE = 2;

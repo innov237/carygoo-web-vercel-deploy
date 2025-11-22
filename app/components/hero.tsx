@@ -93,8 +93,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="max-w-2xl mb-8 font-light text-gray-600 lg:mb-10 md:text-xl lg:text-xl dark:text-gray-400"
           >
-            Carygoo est la plateforme qui connecte les expéditeurs et les transporteurs en temps réel.
-            Grâce à notre solution de logistique intelligente, vous pouvez suivre, gérer et optimiser vos livraisons.
+            Optimisez vos livraisons, fidélisez vos clients et développez votre activité grâce à la plateforme de gestion des livraisons propulsée par l'IA de Carygoo.
           </motion.p>
 
           <motion.div
@@ -151,11 +150,11 @@ const Hero: React.FC = () => {
                   <div className="flex items-center space-x-2 mb-1">
                     <CheckCircle className="w-6 h-6 text-slate-600" />
                     <h3 className="text-xl font-extrabold text-slate-700">
-                      24/7 Tracking
+                      Suivi 24h/7
                     </h3>
                   </div>
                   <p className="text-sm text-gray-600 mt-1">
-                    Always know where your goods are in real-time
+                    Suivez l'acheminement de vos marchandises en temps réel, à chaque étape.
                   </p>
                 </CardContent>
               </Card>
@@ -177,13 +176,13 @@ const Hero: React.FC = () => {
                     </h3>
                   </div>
                   <p className="text-sm text-gray-700 mt-1">
-                    Fast, safe, and trackable deliveries across Africa
+                    Rapides, fiables et traçables en temps réel.
                   </p>
                   <a
                     href="https://carygoo.com"
                     className="inline-flex items-center mt-3 text-sm font-medium text-slate-600 hover:text-slate-700 transition duration-300"
                   >
-                    Explore services
+                    Découvrez nos services
                     <MoveRight className="w-4 h-4 ml-1" />
                   </a>
                 </CardContent>

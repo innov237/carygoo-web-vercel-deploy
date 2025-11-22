@@ -7,11 +7,11 @@ import { motion, useMotionValue, animate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react'; // 🎯 Ajout de useState
 
 const clientLogos = [
-    { name: 'Logo DHL', path: 'https://www.kobo360.com/home-image/DHL.svg', width: 120, height: 40 },
+    { name: 'Logo DHL', path: 'https://cdn.prod.website-files.com/62428b049409c6b74b6b6636/67e5db26da65e7c818e6f76b_kfc-logo.png', width: 120, height: 40 },
     { name: 'Logo ShivaPlus', path: 'http://shivaplus.com/wp-content/uploads/2023/07/shiva-logo__2_-removebg-preview.png', width: 90, height: 40 },
-    { name: 'Logo Unilever', path: 'https://www.kobo360.com/home-image/Unilever%201.svg', width: 140, height: 40 },
-    { name: 'Logo Honeywell', path: 'https://www.kobo360.com/home-image/Honeywell_logo%201.svg', width: 100, height: 40 },
-    { name: 'Logo Maersk', path: 'https://www.kobo360.com/home-image/Dangote.svg', width: 120, height: 40 },
+    { name: 'Logo Unilever', path: 'https://cdn.prod.website-files.com/62428b049409c6b74b6b6636/67e355d044bf929b1b792c21_use-case-logo-7.avif', width: 140, height: 40 },
+    { name: 'Logo Honeywell', path: 'https://cdn.prod.website-files.com/62428b049409c6b74b6b6636/67e355d044bf929b1b792c45_use-case-logo-2.avif', width: 100, height: 40 },
+    { name: 'Logo Maersk', path: 'https://cdn.prod.website-files.com/62428b049409c6b74b6b6636/67e5db26ac481a438edb73a1_sage-logo.png', width: 120, height: 40 },
 ];
 
 const allLogos = [...clientLogos, ...clientLogos];
