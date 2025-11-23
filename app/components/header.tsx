@@ -37,7 +37,7 @@ const HeaderWhite: React.FC = () => {
           <div className="flex items-center lg:order-2 space-x-3">
 
             {/* Bouton CTA - Couleur d'accentuation Rouge */}
-            <a href="#" className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5">
+            <a href="/contact" className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5">
               Démarrer l'Essai
             </a>
 
@@ -104,7 +104,7 @@ const HeaderWhite: React.FC = () => {
               <a href="/contact" className="block px-4 py-3 text-2xl font-semibold text-gray-900 hover:text-red-600 hover:bg-gray-100 rounded-lg transition-colors" onClick={toggleMenu}>Contact</a>
             </li>
             <li className="pt-6">
-              <a href="#" className="block w-full text-center text-white bg-red-600 hover:bg-red-700 font-bold rounded-lg text-lg px-4 py-3 focus:ring-4 focus:ring-red-300 transition-colors" onClick={toggleMenu}>
+              <a href="/contact" className="block w-full text-center text-white bg-red-600 hover:bg-red-700 font-bold rounded-lg text-lg px-4 py-3 focus:ring-4 focus:ring-red-300 transition-colors" onClick={toggleMenu}>
                 Démarrer l'Essai Gratuit
               </a>
             </li>
