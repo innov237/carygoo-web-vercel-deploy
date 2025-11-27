@@ -25,6 +25,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const SECTIONS = [
     {
         id: "customers",
+        img:"",
         title: "Pour vos clients",
         description: "Offrez une expérience de livraison transparente qui fidélise votre clientèle.",
         features: [
@@ -37,6 +38,7 @@ const SECTIONS = [
     },
     {
         id: "managers",
+        img:"",
         title: "Pour les gestionnaires",
         description: "Gérez vos opérations depuis une interface unique, accessible sur web, tablette et mobile.",
         features: [
@@ -49,6 +51,7 @@ const SECTIONS = [
     },
     {
         id: "growth",
+        img:"",
         title: "Boostez vos Avis Google",
         description: "Transformez la satisfaction client en opportunités commerciales grâce à l'automatisation.",
         features: [
@@ -61,6 +64,7 @@ const SECTIONS = [
     },
     {
         id: "ai",
+        img:"",
         title: "Carygoo AI & Rapports",
         description: "L'intelligence artificielle au service de votre performance opérationnelle.",
         features: [
@@ -73,6 +77,7 @@ const SECTIONS = [
     },
     {
         id: "drivers",
+        img:"",
         title: "Pour les chauffeurs",
         description: "Une application mobile intuitive conçue pour faciliter le travail de vos livreurs sur le terrain.",
         features: [
