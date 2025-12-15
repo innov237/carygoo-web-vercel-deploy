@@ -5,7 +5,7 @@ export default function PrivacyPolicyPage() {
         <main className="min-h-screen bg-white text-gray-800 px-6 py-12 md:px-20">
             <div className="max-w-4xl mx-auto space-y-8">
                 <header className="space-y-2 mt-16">
-                    <h1 className="text-3xl md:text-4xl font-bold">Politique de confidentialité – Carygoo</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold">Politique de confidentialité - Carygoo</h1>
                     <p className="text-sm text-gray-500">Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}</p>
                 </header>
 
