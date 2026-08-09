@@ -4,6 +4,7 @@ import Hero from "../components/hero";
 import ServiceCoverage from "../components/services";
 import MotionLogoCarousel from "../components/trusted";
 import CarygooStatsDark from '../components/carygooStatsDark';
+import Solutions from "../components/solutions";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <Hero />
       <MotionLogoCarousel />
       <ServiceCoverage />
+      <Solutions />
       <CarygooSimpleFeatures />
       <AppFeatures />
       <CarygooStatsDark />

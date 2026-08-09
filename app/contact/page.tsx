@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { User, Mail, Lock, Gift, ArrowRight } from 'lucide-react';
+import { User, Mail, Phone, Building2, MessageSquare, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 
 // Données des témoignages
 const TESTIMONIALS = [
@@ -24,8 +24,25 @@ const TESTIMONIALS = [
     },
 ];
 
-const SignUpTestimonialPageFinal: React.FC = () => {
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+interface FieldErrors {
+    [field: string]: string[];
+}
+
+const ContactPage: React.FC = () => {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [company, setCompany] = useState("");
+    const [message, setMessage] = useState("");
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+    const [formError, setFormError] = useState<string | null>(null);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     // Logique du Slider
     useEffect(() => {
@@ -40,6 +57,38 @@ const SignUpTestimonialPageFinal: React.FC = () => {
 
     const testimonial = TESTIMONIALS[currentTestimonial];
 
+    const fieldError = (field: string) => fieldErrors[field]?.[0];
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setFormError(null);
+        setFieldErrors({});
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch(`${API_URL}/contact`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, phone, company, message }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setIsSuccess(true);
+            } else if (result.data && typeof result.data === "object") {
+                setFieldErrors(result.data);
+                setFormError("Le formulaire contient des erreurs — corrigez-les ci-dessous.");
+            } else {
+                setFormError(result.message || "Une erreur est survenue.");
+            }
+        } catch {
+            setFormError("Impossible de contacter le serveur. Vérifiez votre connexion et réessayez.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         // 1. Conteneur externe : Hauteur dynamique sur mobile, h-screen sur desktop, sans marge latérale.
         <section className="bg-gray-50 flex items-stretch justify-center w-full py-0 lg:h-screen">
@@ -52,73 +101,123 @@ const SignUpTestimonialPageFinal: React.FC = () => {
                 {/* Colonne de Gauche : Formulaire */}
                 <div className="p-8 md:p-12 lg:overflow-y-auto">
                     <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
-                        Créez votre compte Carygoo
+                        Parlons de votre projet
                     </h2>
                     <p className="text-gray-500 mb-8">
-                        Rejoignez des milliers d'entreprises qui gèrent leurs livraisons.
+                        Décrivez-nous votre besoin, un membre de l&apos;équipe Carygoo vous recontacte rapidement.
                     </p>
 
-                    <form className="space-y-6">
-
-                        {/* Champ: Nom */}
-                        <div className="relative">
-                            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Votre nom"
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
-                                required
-                            />
+                    {isSuccess ? (
+                        <div className="rounded-lg border border-green-200 bg-green-50 p-6 flex items-start gap-3">
+                            <CheckCircle2 className="h-6 w-6 text-green-600 shrink-0 mt-0.5" />
+                            <div>
+                                <p className="font-bold text-green-800">Message envoyé !</p>
+                                <p className="text-green-700 text-sm mt-1">
+                                    Merci, notre équipe vous recontactera très prochainement à l&apos;adresse{" "}
+                                    <strong>{email}</strong>.
+                                </p>
+                            </div>
                         </div>
+                    ) : (
+                        <form className="space-y-6" onSubmit={handleSubmit}>
+                            {formError && (
+                                <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                                    {formError}
+                                </div>
+                            )}
 
-                        {/* Champ: Email */}
-                        <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                            <input
-                                type="email"
-                                placeholder="Adresse e-mail"
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
-                                required
-                            />
-                        </div>
+                            {/* Champ: Nom */}
+                            <div>
+                                <div className="relative">
+                                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                                    <input
+                                        type="text"
+                                        placeholder="Votre nom"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                        required
+                                    />
+                                </div>
+                                {fieldError("name") && <p className="mt-1 text-xs text-red-600">{fieldError("name")}</p>}
+                            </div>
 
-                        {/* Champ: Mot de passe */}
-                        <div className="relative">
-                            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                            <input
-                                type="password"
-                                placeholder="Mot de passe"
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
-                                required
-                            />
-                        </div>
+                            {/* Champ: Email */}
+                            <div>
+                                <div className="relative">
+                                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                                    <input
+                                        type="email"
+                                        placeholder="Adresse e-mail"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                        required
+                                    />
+                                </div>
+                                {fieldError("email") && <p className="mt-1 text-xs text-red-600">{fieldError("email")}</p>}
+                            </div>
 
-                        {/* Champ: Code Promo (Optionnel) */}
-                        <div className="relative">
-                            <Gift className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Code promo (optionnel)"
-                                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
-                            />
-                        </div>
+                            {/* Champ: Téléphone (optionnel) */}
+                            <div>
+                                <div className="relative">
+                                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                                    <input
+                                        type="tel"
+                                        placeholder="Numéro de téléphone (optionnel)"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                    />
+                                </div>
+                                {fieldError("phone") && <p className="mt-1 text-xs text-red-600">{fieldError("phone")}</p>}
+                            </div>
 
-                        {/* Bouton d'Inscription */}
-                        <button
-                            type="submit"
-                            className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg text-lg transition duration-200 mt-8"
-                        >
-                            Créer mon compte <ArrowRight className="ml-2 w-5 h-5" />
-                        </button>
-                    </form>
+                            {/* Champ: Entreprise (optionnel) */}
+                            <div>
+                                <div className="relative">
+                                    <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                                    <input
+                                        type="text"
+                                        placeholder="Nom de votre entreprise (optionnel)"
+                                        value={company}
+                                        onChange={(e) => setCompany(e.target.value)}
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                    />
+                                </div>
+                                {fieldError("company") && <p className="mt-1 text-xs text-red-600">{fieldError("company")}</p>}
+                            </div>
 
-                    {/* Lien de Connexion */}
-                    <div className="mt-6 text-center text-gray-600">
-                        Vous avez déjà un compte ?{' '}
-                        <a href="#" className="font-semibold text-red-600 hover:text-red-700">
-                            Connectez-vous
-                        </a>
-                    </div>
+                            {/* Champ: Message */}
+                            <div>
+                                <div className="relative">
+                                    <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                                    <textarea
+                                        placeholder="Votre message"
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                        rows={4}
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900 resize-none"
+                                        required
+                                    />
+                                </div>
+                                {fieldError("message") && <p className="mt-1 text-xs text-red-600">{fieldError("message")}</p>}
+                            </div>
+
+                            {/* Bouton d'envoi */}
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg text-lg transition duration-200 mt-8 disabled:opacity-60"
+                            >
+                                {isSubmitting ? (
+                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                ) : (
+                                    <>Envoyer mon message <ArrowRight className="ml-2 w-5 h-5" /></>
+                                )}
+                            </button>
+                        </form>
+                    )}
                 </div>
 
                 {/* Colonne de Droite : Slider de Témoignages (Fond Snow #FFFAFA) */}
@@ -170,4 +269,4 @@ const SignUpTestimonialPageFinal: React.FC = () => {
     );
 };
 
-export default SignUpTestimonialPageFinal;
+export default ContactPage;
