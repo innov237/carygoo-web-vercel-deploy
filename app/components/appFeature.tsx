@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 import {
     // Section Clients
@@ -12,8 +13,6 @@ import {
     Zap, PieChart, MessageSquareText, Headphones,
     // Section Drivers
     Smartphone, ClipboardList, MessageCircle, Route,
-    // UI Générale
-    Image as ImageIcon
 } from "lucide-react";
 
 import { Inter } from "next/font/google";
@@ -45,7 +44,7 @@ const SECTIONS = [
             { text: "Dashboard centralisé livraisons", icon: LayoutDashboard },
             { text: "Localisation flotte en temps réel", icon: LocateFixed },
             { text: "Attribution intelligente (Auto-dispatch)", icon: Bot },
-            { text: "Accès réseaux tiers (Uber, DoorDash...)", icon: Layers },
+            { text: "Coursiers tiers (Uber, DoorDash...) le jour même", icon: Layers },
         ],
         imagePosition: "left",
     },
@@ -110,10 +109,42 @@ const AppFeatures = () => {
                 </div>
 
                 {/* Boucle Sections */}
-                <div className="space-y-24 lg:space-y-32">
+                <div className="relative space-y-24 lg:space-y-32">
+                    {/* Ligne serpentine reliant les modules, côté image à chaque étape */}
+                    <svg
+                        viewBox="0 0 100 500"
+                        preserveAspectRatio="none"
+                        className="pointer-events-none absolute inset-0 -z-10 hidden h-full w-full lg:block"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M80,50 C80,100 20,100 20,150 C20,200 80,200 80,250 C80,300 20,300 20,350 C20,400 80,400 80,450"
+                            fill="none"
+                            stroke="#FF2D16"
+                            strokeWidth="0.6"
+                            strokeDasharray="1.4 2.2"
+                            className="animate-[cg-flow_6s_linear_infinite]"
+                            opacity="0.35"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                        {[
+                            [80, 50],
+                            [20, 150],
+                            [80, 250],
+                            [20, 350],
+                            [80, 450],
+                        ].map(([x, y], i) => (
+                            <circle key={i} cx={x} cy={y} r="1.6" fill="#FF2D16" opacity="0.5" />
+                        ))}
+                    </svg>
+
                     {SECTIONS.map((section) => (
-                        <div
+                        <motion.div
                             key={section.id}
+                            initial={{ opacity: 0, y: 32 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.25 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
                             className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
                         >
                             {/* Colonne Texte */}
@@ -128,7 +159,7 @@ const AppFeatures = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
                                     {section.features.map((feature, idx) => (
                                         <div key={idx} className="flex items-start group">
-                                            <div className="flex-shrink-0 mt-1">
+                                            <div className="shrink-0 mt-1">
                                                 <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-red-50 text-red-600 transition-colors duration-300 group-hover:bg-red-600 group-hover:text-white border border-red-100 group-hover:border-red-600">
                                                     <feature.icon size={20} strokeWidth={2.5} />
                                                 </div>
@@ -141,33 +172,33 @@ const AppFeatures = () => {
                                 </div>
                             </div>
 
-                            {/* Colonne Image */}
+                            {/* Colonne Visuel : mockup animé composé des icônes de la section */}
                             <div className={`flex-1 w-full ${section.imagePosition === 'left' ? 'lg:order-1' : 'lg:order-2'}`}>
-                                <div className="relative aspect-[4/3] w-full bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-lg group">
-                                    {/* Décoration de fond subtile */}
+                                <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl border border-gray-200 bg-linear-to-br from-gray-50 to-white shadow-lg">
+                                    {/* Grille de fond subtile */}
                                     <div className="absolute inset-0 bg-gray-50 opacity-50 pattern-dots" />
 
-                                    {/* Placeholder pour l'image */}
-                                    <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                                        <div className="p-6 bg-white rounded-full shadow-sm mb-4 border border-gray-100 group-hover:scale-110 transition-transform duration-500">
-                                            <ImageIcon size={40} className="text-gray-300 group-hover:text-red-500 transition-colors duration-300" />
-                                        </div>
-                                        <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                            Interface {section.title}
-                                        </p>
-                                    </div>
+                                    {/* Reflet lumineux qui balaie la carte */}
+                                    <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-1/3 -skew-x-12 bg-linear-to-r from-transparent via-white/60 to-transparent animate-[sheen_4s_ease-in-out_infinite]" />
 
-                                    {/* Exemple d'implémentation réelle d'image (à décommenter) */}
-                                    {/* <Image 
-                        src={`/images/${section.id}.png`} 
-                        alt={section.title}
-                        fill
-                        className="object-cover object-center"
-                    /> 
-                    */}
+                                    <div className="relative z-10 grid h-full grid-cols-2 place-items-center gap-6 p-10">
+                                        {section.features.map((feature, idx) => (
+                                            <motion.div
+                                                key={idx}
+                                                initial={{ opacity: 0, scale: 0.7 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                viewport={{ once: true, amount: 0.5 }}
+                                                transition={{ duration: 0.4, delay: 0.15 * idx, type: "spring", stiffness: 200 }}
+                                                whileHover={{ scale: 1.08 }}
+                                                className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-red-600 shadow-md ring-1 ring-gray-100"
+                                            >
+                                                <feature.icon size={28} strokeWidth={2} />
+                                            </motion.div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 

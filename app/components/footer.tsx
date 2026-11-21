@@ -53,7 +53,10 @@ const Footer = () => {
             <h3 className="mb-6 text-sm font-semibold text-white uppercase">Mentions Légales</h3>
             <ul className="text-gray-400 space-y-3">
               <li>
-                <a href="#" className="hover:text-rose-400 transition-colors duration-200">Politique de confidentialité</a>
+                <a href="/privacy" className="hover:text-rose-400 transition-colors duration-200">Politique de confidentialité</a>
+              </li>
+              <li>
+                <a href="/account-deletion-request" className="hover:text-rose-400 transition-colors duration-200">Suppression de compte</a>
               </li>
               <li>
                 <a href="#" className="hover:text-rose-400 transition-colors duration-200">Licence</a>

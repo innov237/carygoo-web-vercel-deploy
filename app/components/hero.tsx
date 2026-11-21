@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 import {
@@ -25,7 +25,56 @@ const CardContent: React.FC<React.ComponentProps<'div'>> = ({ className, childre
   </div>
 );
 
+// Les piliers technologiques affichés en effet machine à écrire
+const FLAGSHIP_MODULES = [
+  "de livraison",
+  "du distribution intelligent",
+  "de la gestion de flotte",
+  "des points relais",
+  "des coursiers",
+  "des boutiques en ligne",
+  "des paiements",
+  "de l'IA & des rapports",
+];
+
+const TYPING_SPEED = 70;
+const DELETING_SPEED = 35;
+const PAUSE_AFTER_TYPED = 1600;
+const PAUSE_AFTER_DELETED = 300;
+
+// Effet machine à écrire : tape chaque module, l'efface, puis passe au suivant
+function useTypewriter(words: string[]) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+
+    if (!deleting && subIndex === currentWord.length) {
+      const timeout = setTimeout(() => setDeleting(true), PAUSE_AFTER_TYPED);
+      return () => clearTimeout(timeout);
+    }
+
+    if (deleting && subIndex === 0) {
+      const timeout = setTimeout(() => {
+        setDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+      }, PAUSE_AFTER_DELETED);
+      return () => clearTimeout(timeout);
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (deleting ? -1 : 1));
+    }, deleting ? DELETING_SPEED : TYPING_SPEED);
+    return () => clearTimeout(timeout);
+  }, [subIndex, deleting, wordIndex, words]);
+
+  return words[wordIndex].substring(0, subIndex);
+}
+
 const Hero: React.FC = () => {
+  const typedModule = useTypewriter(FLAGSHIP_MODULES);
 
   // Variantes d'entrée (No Change)
   const cardEnterVariants: Variants = {
@@ -73,8 +122,15 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-gray-900 overflow-hidden py-16 sm:py-24">
-      <div className="grid mt-10 max-w-screen-xl px-4 mx-auto lg:gap-12 xl:gap-0 lg:grid-cols-12">
+    <section className="relative bg-white dark:bg-gray-900 overflow-hidden py-16 sm:py-24">
+      {/* Fond en dégradés doux, façon Stripe — remplace le blanc plat */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute -top-32 -right-24 h-[32rem] w-[32rem] rounded-full bg-[#FF2D16]/15 blur-[110px]" />
+        <div className="absolute top-1/3 -left-32 h-[26rem] w-[26rem] rounded-full bg-slate-300/30 blur-[100px]" />
+        <div className="absolute -bottom-24 right-1/4 h-[22rem] w-[22rem] rounded-full bg-[#FF2D16]/10 blur-[90px]" />
+      </div>
+
+      <div className="relative grid mt-10 max-w-screen-xl px-4 mx-auto lg:gap-12 xl:gap-0 lg:grid-cols-12">
 
         {/* ======== Texte principal et CTA (lg:col-span-7) ======== */}
         <div className="mr-auto place-self-center lg:col-span-7 pr-4">
@@ -84,7 +140,12 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="max-w-2xl mb-4 text-4xl font-extrabold leading-tight md:text-6xl xl:text-6xl dark:text-white"
           >
-            La plateforme de <span className="text-slate-700 dark:text-slate-300">logistique</span> intelligente pour vos livraisons
+            L'infrastructure technologique 
+            <br />
+            <span className="block min-h-[1.3em] text-red-600 dark:text-slate-300">
+              {typedModule}
+              <span className="ml-1 inline-block h-[0.85em] w-0.75 animate-pulse bg-slate-700 align-middle dark:bg-slate-300" />
+            </span>
           </motion.h1>
 
           <motion.p
@@ -93,7 +154,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="max-w-2xl mb-8 font-light text-gray-600 lg:mb-10 md:text-xl lg:text-xl dark:text-gray-400"
           >
-            Optimisez vos livraisons, fidélisez vos clients et développez votre activité grâce à la plateforme de gestion des livraisons propulsée par l'IA de Carygoo.
+            Carygoo simplifie la livraison, pour les entreprises et les particuliers à travers le monde. Expédiez, suivez en temps réel et payez en toute simplicité.
           </motion.p>
 
           <motion.div
@@ -131,13 +192,54 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="relative flex justify-center w-full max-w-sm lg:max-w-none lg:p-10"
           >
-            <img
-              src="/images/hero.png"
-              alt="Carygoo app preview"
-              width={600}
-              height={400}
-              className="w-auto h-auto max-w-full"
-            />
+            <div className="relative w-full max-w-full overflow-hidden rounded-3xl border border-slate-200 bg-linear-to-br from-slate-50 to-white shadow-xl">
+              <svg
+                viewBox="0 0 600 400"
+                className="h-auto w-full"
+                role="img"
+                aria-label="Suivi de livraison en temps réel"
+              >
+                <defs>
+                  <pattern id="heroGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                    <circle cx="1.5" cy="1.5" r="1.5" fill="#CBD5E1" opacity="0.5" />
+                  </pattern>
+                </defs>
+                <rect width="600" height="400" fill="url(#heroGrid)" />
+
+                <path
+                  d="M90,300 Q300,60 500,120"
+                  fill="none"
+                  stroke="#94A3B8"
+                  strokeWidth="3"
+                  strokeDasharray="8 10"
+                  className="animate-[cg-flow_6s_linear_infinite]"
+                  opacity="0.6"
+                />
+
+                <circle cx="90" cy="300" r="9" fill="#334155" />
+                <circle cx="90" cy="300" r="16" fill="none" stroke="#334155" strokeWidth="2" opacity="0.25" />
+
+                <circle cx="500" cy="120" r="9" fill="#FF2D16" />
+                <circle cx="500" cy="120" r="9" fill="#FF2D16" opacity="0.35">
+                  <animate attributeName="r" values="9;26;9" dur="2.4s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite" />
+                </circle>
+
+                <circle r="7" fill="#1E293B">
+                  <animateMotion dur="3.2s" repeatCount="indefinite" path="M90,300 Q300,60 500,120" />
+                </circle>
+              </svg>
+
+              <motion.div
+                className="absolute left-[72%] top-[18%] flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-md"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: [0, 0, 1, 1, 0], scale: [0.8, 0.8, 1, 1, 0.8] }}
+                transition={{ duration: 3.2, repeat: Infinity, times: [0, 0.82, 0.88, 0.97, 1] }}
+              >
+                <CheckCircle className="h-3.5 w-3.5 text-slate-700" />
+                Livré
+              </motion.div>
+            </div>
             <motion.div
               initial="hidden"
               animate={["visible", "float"]}
@@ -165,7 +267,7 @@ const Hero: React.FC = () => {
               animate={["visible", "float"]}
               variants={{ ...cardEnterVariants, ...cardFloatVariants2 }}
               custom={0.2}
-              className="absolute lg:-bottom-16 lg:-right-5 z-10 hidden lg:block w-64"
+              className="absolute lg:-bottom-10 lg:-right-16 z-10 hidden lg:block w-64"
             >
               <Card className="bg-white/95 backdrop-blur-sm border-2 border-slate-200 shadow-lg rounded-xl p-4 w-full">
                 <CardContent className="p-0">

@@ -115,6 +115,48 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@keyframes cg-flow {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes sheen {
+  0% {
+    transform: translateX(-150%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(400%) skewX(-12deg);
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-spin-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes globe-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-420px);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

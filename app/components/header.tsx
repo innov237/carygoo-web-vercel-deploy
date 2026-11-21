@@ -36,6 +36,7 @@ const HeaderWhite: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDesktopGroup, setOpenDesktopGroup] = useState<string | null>(null);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
@@ -60,10 +61,21 @@ const HeaderWhite: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     // Fixed Header sur fond blanc
     <header className="fixed z-50 w-full">
-      <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-200 py-4 shadow-sm">
+      <nav
+        className={`bg-white/95 backdrop-blur-sm border-b transition-all duration-300 ${
+          isScrolled ? "py-2.5 border-gray-200 shadow-md" : "py-4 border-gray-100 shadow-sm"
+        }`}
+      >
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
 
           {/* Logo et Nom de la Marque */}
@@ -74,7 +86,9 @@ const HeaderWhite: React.FC = () => {
                 alt="Carygoo Logo"
                 width={36}
                 height={36}
-                className="h-7 w-7 rounded-full sm:h-8 sm:w-8 transition-transform duration-300 group-hover:scale-110"
+                className={`rounded-full transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 ${
+                  isScrolled ? "h-6 w-6 sm:h-7 sm:w-7" : "h-7 w-7 sm:h-8 sm:w-8"
+                }`}
               />
             </div>
             <span className="self-center text-xl font-bold whitespace-nowrap text-gray-900 font-display">Carygoo</span>
@@ -114,7 +128,7 @@ const HeaderWhite: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setOpenDesktopGroup(openDesktopGroup === group.label ? null : group.label)}
-                        className="flex items-center gap-1 py-2 px-3 text-gray-600 hover:text-red-600 transition-colors duration-200 rounded-lg"
+                        className="group/link relative flex items-center gap-1 py-2 px-3 text-gray-600 hover:text-red-600 transition-colors duration-200 rounded-lg"
                         aria-expanded={openDesktopGroup === group.label}
                       >
                         {group.label}
@@ -122,6 +136,7 @@ const HeaderWhite: React.FC = () => {
                           size={15}
                           className={`transition-transform duration-200 ${openDesktopGroup === group.label ? "rotate-180" : ""}`}
                         />
+                        <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-red-600 transition-transform duration-300 group-hover/link:scale-x-100" />
                       </button>
                       <AnimatePresence>
                         {openDesktopGroup === group.label && (
@@ -149,9 +164,10 @@ const HeaderWhite: React.FC = () => {
                   ) : (
                     <a
                       href={group.href}
-                      className="block py-2 px-3 text-gray-600 hover:text-red-600 transition-colors duration-200 rounded-lg"
+                      className="group/link relative block py-2 px-3 text-gray-600 hover:text-red-600 transition-colors duration-200 rounded-lg"
                     >
                       {group.label}
+                      <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 origin-left scale-x-0 bg-red-600 transition-transform duration-300 group-hover/link:scale-x-100" />
                     </a>
                   )}
                 </li>

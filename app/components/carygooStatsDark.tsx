@@ -1,9 +1,42 @@
 "use client";
-import React from "react";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import { Inter } from "next/font/google";
 
 // Initialisation de la police Inter
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+// Anime un chiffre de 0 jusqu'à sa valeur cible dès qu'il entre dans le viewport
+function CountUpStat({ value }: { value: string }) {
+  const match = value.match(/^(\d+(?:\.\d+)?)(.*)$/);
+  const target = match ? parseFloat(match[1]) : 0;
+  const suffix = match ? match[2] : "";
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const duration = 1400;
+    const start = performance.now();
+    let frame: number;
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(eased * target));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [isInView, target]);
+
+  return (
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
+  );
+}
 
 // Données des Statistiques
 const STATS = [
@@ -89,7 +122,7 @@ const CarygooStatsShipdayStyle = () => {
                   bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600
                 `}
               >
-                {stat.value}
+                <CountUpStat value={stat.value} />
               </span>
               
               {/* Label (Gris clair pour la lisibilité) */}
