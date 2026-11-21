@@ -64,7 +64,7 @@ const SECTIONS = [
     {
         id: "ai",
         img:"",
-        title: "Carygoo AI & Rapports",
+        title: "Siara AI & Rapports",
         description: "L'intelligence artificielle au service de votre performance opérationnelle.",
         features: [
             { text: "Boost de performance via IA", icon: Zap },
@@ -96,7 +96,7 @@ const AppFeatures = () => {
 
                 {/* En-tête */}
                 <div className="text-center max-w-3xl mx-auto mb-24">
-                    <p className="text-sm font-bold uppercase text-red-600 tracking-widest mb-3">
+                    <p className="text-sm font-bold uppercase text-brand-600 tracking-widest mb-3">
                         Solution Tout-en-un
                     </p>
                     <h2 className="text-4xl font-extrabold text-gray-900 mb-6 tracking-tight sm:text-5xl leading-tight">
@@ -104,7 +104,7 @@ const AppFeatures = () => {
                     </h2>
                     <p className="text-lg text-gray-600 leading-relaxed">
                         Commencez à prendre des commandes ou élargissez votre zone de livraison.
-                        Utilisez vos propres chauffeurs ou le vaste réseau de partenaires Carygoo.
+                        Utilisez vos propres chauffeurs ou le vaste réseau de partenaires Siara.
                     </p>
                 </div>
 
@@ -120,7 +120,7 @@ const AppFeatures = () => {
                         <path
                             d="M80,50 C80,100 20,100 20,150 C20,200 80,200 80,250 C80,300 20,300 20,350 C20,400 80,400 80,450"
                             fill="none"
-                            stroke="#FF2D16"
+                            stroke="#FF296C"
                             strokeWidth="0.6"
                             strokeDasharray="1.4 2.2"
                             className="animate-[cg-flow_6s_linear_infinite]"
@@ -134,7 +134,7 @@ const AppFeatures = () => {
                             [20, 350],
                             [80, 450],
                         ].map(([x, y], i) => (
-                            <circle key={i} cx={x} cy={y} r="1.6" fill="#FF2D16" opacity="0.5" />
+                            <circle key={i} cx={x} cy={y} r="1.6" fill="#FF296C" opacity="0.5" />
                         ))}
                     </svg>
 
@@ -160,11 +160,11 @@ const AppFeatures = () => {
                                     {section.features.map((feature, idx) => (
                                         <div key={idx} className="flex items-start group">
                                             <div className="shrink-0 mt-1">
-                                                <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-red-50 text-red-600 transition-colors duration-300 group-hover:bg-red-600 group-hover:text-white border border-red-100 group-hover:border-red-600">
+                                                <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white border border-brand-100 group-hover:border-brand-600">
                                                     <feature.icon size={20} strokeWidth={2.5} />
                                                 </div>
                                             </div>
-                                            <span className="ml-4 text-base font-medium text-gray-800 group-hover:text-red-700 transition-colors duration-300">
+                                            <span className="ml-4 text-base font-medium text-gray-800 group-hover:text-brand-700 transition-colors duration-300">
                                                 {feature.text}
                                             </span>
                                         </div>
@@ -190,7 +190,7 @@ const AppFeatures = () => {
                                                 viewport={{ once: true, amount: 0.5 }}
                                                 transition={{ duration: 0.4, delay: 0.15 * idx, type: "spring", stiffness: 200 }}
                                                 whileHover={{ scale: 1.08 }}
-                                                className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-red-600 shadow-md ring-1 ring-gray-100"
+                                                className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-md ring-1 ring-gray-100"
                                             >
                                                 <feature.icon size={28} strokeWidth={2} />
                                             </motion.div>

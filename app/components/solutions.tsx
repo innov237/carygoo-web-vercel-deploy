@@ -84,7 +84,7 @@ export default function Solutions() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <p className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3">
+          <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             Une plateforme, tous vos flux logistiques
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-balance">
@@ -110,14 +110,14 @@ export default function Solutions() {
               variants={cardVariants}
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group relative flex flex-col bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:border-red-200 transition-shadow duration-300"
+              className="group relative flex flex-col bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:border-brand-200 transition-shadow duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-5 group-hover:bg-red-600 transition-colors duration-300">
-                <solution.icon className="w-6 h-6 text-red-600 group-hover:text-white transition-colors duration-300" />
+              <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 group-hover:bg-brand-600 transition-colors duration-300">
+                <solution.icon className="w-6 h-6 text-brand-600 group-hover:text-white transition-colors duration-300" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{solution.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">{solution.description}</p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-600">
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
                 En savoir plus
                 <ArrowUpRight
                   size={15}

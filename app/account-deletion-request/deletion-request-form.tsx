@@ -82,7 +82,7 @@ export default function DeletionRequestForm() {
     }
 
     const inputClass =
-        "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900";
+        "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500 text-gray-900";
 
     return (
         <form className="space-y-4 rounded-xl border border-gray-200 p-6" onSubmit={handleSubmit}>
@@ -121,7 +121,7 @@ export default function DeletionRequestForm() {
             <button
                 type="submit"
                 disabled={isSubmitting || !confirmed}
-                className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-3 font-semibold text-white hover:bg-red-700 disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white hover:bg-brand-700 disabled:opacity-50"
             >
                 {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
                 Demander la suppression

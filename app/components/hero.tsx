@@ -1,40 +1,32 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion, Variants } from "framer-motion";
-
+import { motion } from "framer-motion";
 import {
-  CheckCircle,
-  Send,
-  MoveRight,
-  Download,
-  Truck,
+  Car,
+  Package,
+  House,
+  UtensilsCrossed,
+  ShoppingBasket,
+  Pill,
+  Search,
+  CheckCircle2,
+  Wallet,
+  ShieldCheck,
+  Sparkles,
+  type LucideIcon,
 } from "lucide-react";
 
-// Card Component (No Change)
-const Card: React.FC<React.ComponentProps<'div'>> = ({ className, children, ...props }) => (
-  // Shadow softened to shadow-lg for a less dramatic look
-  <div className={`rounded-xl border bg-card text-card-foreground shadow-lg ${className}`} {...props}>
-    {children}
-  </div>
-);
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.hylancompany.carygoo";
+const APP_STORE_URL = "https://apps.apple.com/cm/app/carygoo/id6738035989";
 
-// Card Content Component (No Change)
-const CardContent: React.FC<React.ComponentProps<'div'>> = ({ className, children, ...props }) => (
-  <div className={`p-4 ${className}`} {...props}>
-    {children}
-  </div>
-);
-
-// Les piliers technologiques affichés en effet machine à écrire
+// Les univers de la super app Siara, affichés en effet machine à écrire
 const FLAGSHIP_MODULES = [
-  "de livraison",
-  "du distribution intelligent",
-  "de la gestion de flotte",
-  "des points relais",
-  "des coursiers",
-  "des boutiques en ligne",
-  "des paiements",
-  "de l'IA & des rapports",
+  "vos trajets en VTC",
+  "vos livraisons",
+  "les services à domicile",
+  "vos restaurants préférés",
+  "vos courses au supermarché",
+  "vos paiements Mobile Money",
 ];
 
 const TYPING_SPEED = 70;
@@ -73,277 +65,214 @@ function useTypewriter(words: string[]) {
   return words[wordIndex].substring(0, subIndex);
 }
 
+const APP_TILES: { icon: LucideIcon; label: string; tint: string }[] = [
+  { icon: Car, label: "VTC", tint: "bg-brand-600 text-white" },
+  { icon: Package, label: "Colis", tint: "bg-coral-500 text-white" },
+  { icon: UtensilsCrossed, label: "Restos", tint: "bg-brand-100 text-brand-700" },
+  { icon: ShoppingBasket, label: "Courses", tint: "bg-coral-100 text-coral-700" },
+  { icon: House, label: "Maison", tint: "bg-brand-100 text-brand-700" },
+  { icon: Pill, label: "Pharma", tint: "bg-coral-100 text-coral-700" },
+];
+
+// Icônes officielles simplifiées des stores (badges de téléchargement).
+const PlayGlyph = () => (
+  <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
+    <path fill="#34A853" d="M3.6 1.8 13.4 12 3.6 22.2c-.4-.2-.6-.7-.6-1.2V3c0-.5.2-1 .6-1.2Z" />
+    <path fill="#FBBC04" d="m16.8 8.6-3.4 3.4 3.4 3.4 3.9-2.2c1.1-.6 1.1-1.8 0-2.4l-3.9-2.2Z" />
+    <path fill="#4285F4" d="M3.6 1.8c.3-.2.8-.2 1.3.1l11.9 6.7-3.4 3.4L3.6 1.8Z" />
+    <path fill="#EA4335" d="m13.4 12 3.4 3.4-11.9 6.7c-.5.3-1 .3-1.3.1L13.4 12Z" />
+  </svg>
+);
+const AppleGlyph = () => (
+  <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
+    <path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1ZM13.9 5c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5Z" />
+  </svg>
+);
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
+
 const Hero: React.FC = () => {
   const typedModule = useTypewriter(FLAGSHIP_MODULES);
 
-  // Variantes d'entrée (No Change)
-  const cardEnterVariants: Variants = {
-    hidden: { opacity: 0, x: -60, y: 0 },
-    visible: (delay = 0) => ({
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        delay: 1 + delay,
-        type: "spring",
-        stiffness: 100,
-      }
-    }),
-  };
-
-  // Variantes de flottement 1 (No Change)
-  const cardFloatVariants1: Variants = {
-    float: {
-      y: [0, 5, 0],
-      rotate: [0, 1, -1, 0],
-      transition: {
-        duration: 8,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatType: "reverse",
-        delay: 0.5,
-      }
-    }
-  };
-
-  // Variantes de flottement 2 (No Change)
-  const cardFloatVariants2: Variants = {
-    float: {
-      y: [0, -5, 0],
-      rotate: [0, -1, 1, 0],
-      transition: {
-        duration: 9,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatType: "reverse",
-        delay: 1.5,
-      }
-    }
-  };
-
   return (
-    <section className="relative bg-white dark:bg-gray-900 overflow-hidden py-16 sm:py-24">
-      {/* Fond en dégradés doux, façon Stripe — remplace le blanc plat */}
+    <section className="relative overflow-hidden bg-white pt-32 pb-20 sm:pt-40 sm:pb-28">
+      {/* Fond : halos de la charte + grille pointillée estompée */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -top-32 -right-24 h-[32rem] w-[32rem] rounded-full bg-[#FF2D16]/15 blur-[110px]" />
-        <div className="absolute top-1/3 -left-32 h-[26rem] w-[26rem] rounded-full bg-slate-300/30 blur-[100px]" />
-        <div className="absolute -bottom-24 right-1/4 h-[22rem] w-[22rem] rounded-full bg-[#FF2D16]/10 blur-[90px]" />
+        <div className="absolute -top-40 -right-32 h-[36rem] w-[36rem] rounded-full bg-brand-400/25 blur-[120px]" />
+        <div className="absolute top-1/3 -left-40 h-[28rem] w-[28rem] rounded-full bg-coral-400/15 blur-[110px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#5903DB_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.07] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
       </div>
 
-      <div className="relative grid mt-10 max-w-screen-xl px-4 mx-auto lg:gap-12 xl:gap-0 lg:grid-cols-12">
-
-        {/* ======== Texte principal et CTA (lg:col-span-7) ======== */}
-        <div className="mr-auto place-self-center lg:col-span-7 pr-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-2xl mb-4 text-4xl font-extrabold leading-tight md:text-6xl xl:text-6xl dark:text-white"
+      <div className="relative mx-auto grid max-w-screen-xl items-center gap-16 px-4 lg:grid-cols-12 lg:gap-8">
+        {/* ======== Texte ======== */}
+        <div className="lg:col-span-7">
+          <motion.a
+            {...fadeUp(0)}
+            href="#services"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/80 py-1 pl-1 pr-4 text-sm font-medium text-gray-700 shadow-sm backdrop-blur hover:border-brand-200"
           >
-            L'infrastructure technologique 
-            <br />
-            <span className="block min-h-[1.3em] text-red-600 dark:text-slate-300">
+            <span className="rounded-full bg-brand-600 px-2.5 py-0.5 text-xs font-semibold text-white">Nouveau</span>
+            Carygoo devient Siara
+            <Sparkles className="h-4 w-4 text-coral-500" />
+          </motion.a>
+
+          <motion.h1
+            {...fadeUp(0.08)}
+            className="mt-6 max-w-2xl text-[2.6rem] font-bold leading-[1.05] tracking-tight text-gray-950 sm:text-6xl xl:text-7xl"
+          >
+            Une seule app pour
+            <span className="block min-h-[2.2em] sm:min-h-[1.15em] bg-linear-to-r from-brand-600 via-brand-500 to-coral-500 bg-clip-text text-transparent">
               {typedModule}
-              <span className="ml-1 inline-block h-[0.85em] w-0.75 animate-pulse bg-slate-700 align-middle dark:bg-slate-300" />
+              <span className="ml-1 inline-block h-[0.8em] w-[3px] animate-pulse rounded-full bg-coral-500 align-middle" />
             </span>
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="max-w-2xl mb-8 font-light text-gray-600 lg:mb-10 md:text-xl lg:text-xl dark:text-gray-400"
-          >
-            Carygoo simplifie la livraison, pour les entreprises et les particuliers à travers le monde. Expédiez, suivez en temps réel et payez en toute simplicité.
+          <motion.p {...fadeUp(0.16)} className="mt-6 max-w-xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+            Siara est la super app du quotidien : VTC, livraison, services à domicile, restaurants,
+            supermarché et bien plus. Commandez, suivez en temps réel et payez en toute simplicité.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
-          >
-            {/* Boutons CTA (Couleur Soft/Neutre) */}
+          <motion.div {...fadeUp(0.24)} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="https://play.google.com/store/apps/details?id=com.hylancompany.carygoo"
-              // Changement de Red à Slate (Gris foncé, soft)
-              className="inline-flex items-center justify-center w-full sm:w-56 px-6 py-3 text-lg font-semibold text-center text-white bg-slate-700 rounded-lg shadow-lg hover:bg-slate-800 focus:ring-4 focus:ring-slate-300 dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 transition duration-300 transform hover:scale-[1.02]"
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 rounded-2xl bg-gray-950 px-5 py-3 text-white shadow-lg shadow-gray-950/20 transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-brand-600/30"
             >
-              <Download className="w-5 h-5 mr-2" />
-              Google Play
+              <PlayGlyph />
+              <span className="text-left leading-tight">
+                <span className="block text-[11px] uppercase tracking-wide text-white/70">Disponible sur</span>
+                <span className="block text-lg font-semibold">Google Play</span>
+              </span>
             </a>
+            <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-3 text-gray-950 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lg"
+            >
+              <AppleGlyph />
+              <span className="text-left leading-tight">
+                <span className="block text-[11px] uppercase tracking-wide text-gray-500">Télécharger sur</span>
+                <span className="block text-lg font-semibold">l&apos;App Store</span>
+              </span>
+            </a>
+          </motion.div>
 
-            <a
-              href="https://apps.apple.com/cm/app/carygoo/id6738035989"
-              className="inline-flex items-center justify-center w-full sm:w-56 px-6 py-3 text-lg font-semibold text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-slate-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 transition duration-300 transform hover:scale-[1.02]"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Apple Store
-            </a>
+          <motion.div {...fadeUp(0.32)} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <Wallet className="h-5 w-5 text-coral-500" />
+              Mobile Money, carte ou espèces
+            </div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-brand-600" />
+              Chauffeurs et prestataires vérifiés
+            </div>
           </motion.div>
         </div>
 
-        <div
-          className="relative mt-16 lg:mt-0 lg:col-span-5 flex flex-col items-center justify-start lg:justify-center px-4"
-        >
+        {/* ======== Maquette téléphone ======== */}
+        <div className="relative mx-auto w-full max-w-[22rem] lg:col-span-5">
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative flex justify-center w-full max-w-sm lg:max-w-none lg:p-10"
+            initial={{ opacity: 0, y: 40, rotate: -2 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative rounded-[2.8rem] border-[10px] border-gray-950 bg-gray-950 shadow-2xl shadow-brand-900/30"
           >
-            <div className="relative w-full max-w-full overflow-hidden rounded-3xl border border-slate-200 bg-linear-to-br from-slate-50 to-white shadow-xl">
-              <svg
-                viewBox="0 0 600 400"
-                className="h-auto w-full"
-                role="img"
-                aria-label="Suivi de livraison en temps réel"
-              >
-                <defs>
-                  <pattern id="heroGrid" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <circle cx="1.5" cy="1.5" r="1.5" fill="#CBD5E1" opacity="0.5" />
-                  </pattern>
-                </defs>
-                <rect width="600" height="400" fill="url(#heroGrid)" />
+            <div className="absolute left-1/2 top-2 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-gray-950" />
+            <div className="overflow-hidden rounded-[2.2rem] bg-gray-50">
+              {/* En-tête de l'app */}
+              <div className="bg-linear-to-br from-brand-600 to-brand-800 px-5 pb-6 pt-12 text-white">
+                <p className="text-sm text-white/70">Bonjour 👋</p>
+                <p className="text-xl font-bold">Où allons-nous ?</p>
+                <div className="mt-4 flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 text-sm text-gray-400">
+                  <Search className="h-4 w-4 text-brand-600" />
+                  Rechercher un service, une adresse…
+                </div>
+              </div>
 
-                <path
-                  d="M90,300 Q300,60 500,120"
-                  fill="none"
-                  stroke="#94A3B8"
-                  strokeWidth="3"
-                  strokeDasharray="8 10"
-                  className="animate-[cg-flow_6s_linear_infinite]"
-                  opacity="0.6"
-                />
+              {/* Grille des services */}
+              <div className="-mt-3 rounded-t-3xl bg-gray-50 px-4 pt-5">
+                <div className="grid grid-cols-3 gap-3">
+                  {APP_TILES.map(({ icon: Icon, label, tint }, i) => (
+                    <motion.div
+                      key={label}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6 + i * 0.06 }}
+                      className="flex flex-col items-center gap-1.5 rounded-2xl bg-white py-3 shadow-sm"
+                    >
+                      <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${tint}`}>
+                        <Icon className="h-5 w-5" />
+                      </span>
+                      <span className="text-xs font-semibold text-gray-700">{label}</span>
+                    </motion.div>
+                  ))}
+                </div>
 
-                <circle cx="90" cy="300" r="9" fill="#334155" />
-                <circle cx="90" cy="300" r="16" fill="none" stroke="#334155" strokeWidth="2" opacity="0.25" />
+                {/* Bannière promo */}
+                <div className="mt-4 flex items-center justify-between overflow-hidden rounded-2xl bg-linear-to-r from-coral-500 to-coral-600 p-4 text-white">
+                  <div>
+                    <p className="text-xs font-medium text-white/80">Offre de bienvenue</p>
+                    <p className="text-base font-bold leading-tight">-20 % sur votre<br />première course</p>
+                  </div>
+                  <Car className="h-12 w-12 opacity-30" />
+                </div>
 
-                <circle cx="500" cy="120" r="9" fill="#FF2D16" />
-                <circle cx="500" cy="120" r="9" fill="#FF2D16" opacity="0.35">
-                  <animate attributeName="r" values="9;26;9" dur="2.4s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite" />
-                </circle>
-
-                <circle r="7" fill="#1E293B">
-                  <animateMotion dur="3.2s" repeatCount="indefinite" path="M90,300 Q300,60 500,120" />
-                </circle>
-              </svg>
-
-              <motion.div
-                className="absolute left-[72%] top-[18%] flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-md"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: [0, 0, 1, 1, 0], scale: [0.8, 0.8, 1, 1, 0.8] }}
-                transition={{ duration: 3.2, repeat: Infinity, times: [0, 0.82, 0.88, 0.97, 1] }}
-              >
-                <CheckCircle className="h-3.5 w-3.5 text-slate-700" />
-                Livré
-              </motion.div>
+                {/* Activité récente */}
+                <div className="mt-4 mb-6 flex items-center gap-3 rounded-2xl bg-white p-3 shadow-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                    <UtensilsCrossed className="h-5 w-5" />
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-gray-900">Commande en route</p>
+                    <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-gray-100">
+                      <motion.div
+                        className="h-full rounded-full bg-linear-to-r from-brand-500 to-coral-500"
+                        initial={{ width: "15%" }}
+                        animate={{ width: ["15%", "85%"] }}
+                        transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                      />
+                    </div>
+                  </div>
+                  <span className="text-xs font-semibold text-brand-600">12 min</span>
+                </div>
+              </div>
             </div>
-            <motion.div
-              initial="hidden"
-              animate={["visible", "float"]}
-              variants={{ ...cardEnterVariants, ...cardFloatVariants1 }}
-              custom={0}
-              className="absolute lg:-top-10 lg:-left-16 z-10 hidden lg:block w-64"
-            >
-              <Card className="bg-white/95 backdrop-blur-sm border-2 border-slate-200 shadow-lg rounded-xl p-4 w-full">
-                <CardContent className="p-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <CheckCircle className="w-6 h-6 text-slate-600" />
-                    <h3 className="text-xl font-extrabold text-slate-700">
-                      Suivi 24h/7
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1">
-                    Suivez l'acheminement de vos marchandises en temps réel, à chaque étape.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              animate={["visible", "float"]}
-              variants={{ ...cardEnterVariants, ...cardFloatVariants2 }}
-              custom={0.2}
-              className="absolute lg:-bottom-10 lg:-right-16 z-10 hidden lg:block w-64"
-            >
-              <Card className="bg-white/95 backdrop-blur-sm border-2 border-slate-200 shadow-lg rounded-xl p-4 w-full">
-                <CardContent className="p-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <Send className="w-6 h-6 text-slate-600" />
-                    <h3 className="text-xl font-extrabold text-slate-700">
-                      Carygoo Express
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-700 mt-1">
-                    Rapides, fiables et traçables en temps réel.
-                  </p>
-                  <a
-                    href="https://carygoo.com"
-                    className="inline-flex items-center mt-3 text-sm font-medium text-slate-600 hover:text-slate-700 transition duration-300"
-                  >
-                    Découvrez nos services
-                    <MoveRight className="w-4 h-4 ml-1" />
-                  </a>
-                </CardContent>
-              </Card>
-            </motion.div>
           </motion.div>
 
-          <div className="lg:hidden flex flex-col items-center w-full max-w-sm mt-8 space-y-4">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={cardEnterVariants}
-              custom={0}
-              className="w-full"
-            >
-              <Card className="bg-white/95 backdrop-blur-sm border-2 border-slate-200 shadow-lg rounded-xl p-4 w-full">
-                <CardContent className="p-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <CheckCircle className="w-6 h-6 text-slate-600" />
-                    <h3 className="text-xl font-extrabold text-slate-700">
-                      Suivi 24/7
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1">
-                    Sachez toujours où se trouvent vos marchandises en temps réel
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={cardEnterVariants}
-              custom={0.2}
-              className="w-full"
-            >
-              <Card className="bg-white/95 backdrop-blur-sm border-2 border-slate-200 shadow-lg rounded-xl p-4 w-full">
-                <CardContent className="p-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <Truck className="w-6 h-6 text-slate-600" />
-                    <h3 className="text-xl font-extrabold text-slate-700">
-                      Carygoo Express
-                    </h3>
-                  </div>
-                  <p className="text-sm text-gray-700 mt-1">
-                    Livraisons rapides, sûres et traçables à travers l'Afrique
-                  </p>
-                  <a
-                    href="https://carygoo.com"
-                    className="inline-flex items-center mt-3 text-sm font-medium text-slate-600 hover:text-slate-700 transition duration-300"
-                  >
-                    Explorer les services
-                    <MoveRight className="w-4 h-4 ml-1" />
-                  </a>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
+          {/* Cartes flottantes */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
+            transition={{ opacity: { delay: 1 }, x: { delay: 1 }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
+            className="absolute -left-6 top-24 hidden items-center gap-3 rounded-2xl border border-white/60 bg-white/90 p-3 pr-5 shadow-xl backdrop-blur sm:flex lg:-left-20"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white">
+              <Car className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Votre chauffeur arrive</p>
+              <p className="text-xs text-gray-500">Toyota Corolla · 3 min</p>
+            </div>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0, y: [0, 8, 0] }}
+            transition={{ opacity: { delay: 1.2 }, x: { delay: 1.2 }, y: { duration: 7, repeat: Infinity, ease: "easeInOut" } }}
+            className="absolute -right-4 bottom-28 hidden items-center gap-3 rounded-2xl border border-white/60 bg-white/90 p-3 pr-5 shadow-xl backdrop-blur sm:flex lg:-right-12"
+          >
+            <CheckCircle2 className="h-9 w-9 text-coral-500" />
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Colis livré</p>
+              <p className="text-xs text-gray-500">Paiement Mobile Money ✓</p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

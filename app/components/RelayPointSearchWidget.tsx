@@ -52,12 +52,12 @@ export default function RelayPointSearchWidget() {
           placeholder="Rechercher par ville ou nom du point relais"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900"
+          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-gray-900"
         />
         <button
           type="submit"
           disabled={isLoading}
-          className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-lg transition-colors disabled:opacity-60"
+          className="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-lg transition-colors disabled:opacity-60"
         >
           {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Search size={18} />}
           Rechercher
@@ -86,8 +86,8 @@ export default function RelayPointSearchWidget() {
                     transition={{ delay: index * 0.04 }}
                     className="flex items-start gap-3 bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
-                      <Building2 size={16} className="text-red-600" />
+                    <div className="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center shrink-0">
+                      <Building2 size={16} className="text-brand-600" />
                     </div>
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-900 truncate">{point.name}</p>

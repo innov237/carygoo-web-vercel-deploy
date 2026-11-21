@@ -1,25 +1,27 @@
 import AppFeatures from "../components/appFeature";
-import CarygooSimpleFeatures from "../components/carygooFeature";
-import CarygooGlobeCoverage from "../components/carygooGlobeCoverage";
-import CarygooHub from "../components/carygooHub";
+import SiaraSimpleFeatures from "../components/siaraFeature";
+import SiaraGlobeCoverage from "../components/siaraGlobeCoverage";
+import SiaraHub from "../components/siaraHub";
 import Hero from "../components/hero";
 import ServiceCoverage from "../components/services";
 import MotionLogoCarousel from "../components/trusted";
-import CarygooStatsDark from '../components/carygooStatsDark';
+import SiaraStatsDark from '../components/siaraStatsDark';
 import Solutions from "../components/solutions";
+import SuperAppServices from "../components/superAppServices";
 
 export default function HomePage() {
   return (
     <main className="flex flex-col w-full overflow-x-hidden">
       <Hero />
+      <SuperAppServices />
       <MotionLogoCarousel />
-      <CarygooHub />
+      <SiaraHub />
       <ServiceCoverage />
       <Solutions />
-      <CarygooSimpleFeatures />
+      <SiaraSimpleFeatures />
       <AppFeatures />
-      <CarygooGlobeCoverage />
-      <CarygooStatsDark />
+      <SiaraGlobeCoverage />
+      <SiaraStatsDark />
     </main>
   );
 }

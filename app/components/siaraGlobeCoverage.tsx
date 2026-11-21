@@ -17,7 +17,7 @@ const COVERAGE_STATS: CoverageStat[] = [
     {
         value: "20m+",
         label: "Commandes livrées",
-        description: "Traitées et suivies de bout en bout sur la plateforme Carygoo.",
+        description: "Traitées et suivies de bout en bout sur la plateforme Siara.",
     },
     {
         value: "4k+",
@@ -124,7 +124,7 @@ function OrbitComet({ id, cx, cy, rx, ry, rotate, color, cycleDur, begin }: Orbi
     );
 }
 
-export default function CarygooGlobeCoverage() {
+export default function SiaraGlobeCoverage() {
     const size = 500;
     const center = size / 2;
     const radius = 210;
@@ -141,7 +141,7 @@ export default function CarygooGlobeCoverage() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 text-balance">
-                        Notre couverture, <span className="text-[#FF2D16]">à l&apos;échelle du monde</span>.
+                        Notre couverture, <span className="text-[#FF296C]">à l&apos;échelle du monde</span>.
                     </h2>
                     <p className="text-lg text-gray-600 mb-12 max-w-md">
                         Un seul hub qui relie des milliers d&apos;entreprises et de transporteurs, partout où vos livraisons doivent aller.
@@ -159,7 +159,7 @@ export default function CarygooGlobeCoverage() {
                                     transition={{ duration: 0.4 }}
                                     className="relative"
                                 >
-                                    <span className="absolute -left-6 top-1 h-4 w-0.75 rounded-full bg-[#FF2D16]" />
+                                    <span className="absolute -left-6 top-1 h-4 w-0.75 rounded-full bg-[#FF296C]" />
                                     <div className="flex items-baseline gap-2 flex-wrap">
                                         <span className="text-2xl font-extrabold text-gray-900">{stat.value}</span>
                                         <span className="text-base font-semibold text-gray-700">{stat.label}</span>
@@ -211,9 +211,9 @@ export default function CarygooGlobeCoverage() {
                         <circle cx={center} cy={center} r={radius} fill="none" stroke="#334155" strokeWidth="1.5" opacity="0.6" />
 
                         {/* Orbites façon étoiles filantes : traîne fine qui file autour du globe puis disparaît */}
-                        <OrbitComet id="orbit-a" cx={center} cy={center} rx={radius * 0.98} ry={radius * 0.34} rotate={-20} color="#FF2D16" cycleDur={6} begin={0} />
+                        <OrbitComet id="orbit-a" cx={center} cy={center} rx={radius * 0.98} ry={radius * 0.34} rotate={-20} color="#FF296C" cycleDur={6} begin={0} />
                         <OrbitComet id="orbit-b" cx={center} cy={center} rx={radius * 0.4} ry={radius * 1.02} rotate={35} color="#94A3B8" cycleDur={7} begin={2.3} />
-                        <OrbitComet id="orbit-c" cx={center} cy={center} rx={radius * 0.72} ry={radius * 0.72} rotate={70} color="#FF2D16" cycleDur={8} begin={4.6} />
+                        <OrbitComet id="orbit-c" cx={center} cy={center} rx={radius * 0.72} ry={radius * 0.72} rotate={70} color="#FF296C" cycleDur={8} begin={4.6} />
 
                         {/* Marchés actifs qui pulsent */}
                         {ACTIVE_MARKETS.map((m, i) => {
@@ -221,8 +221,8 @@ export default function CarygooGlobeCoverage() {
                             const y = center - radius + (m.cy / 100) * radius * 2;
                             return (
                                 <g key={i}>
-                                    <circle cx={x} cy={y} r="3.5" fill="#FF2D16" />
-                                    <circle cx={x} cy={y} r="3.5" fill="#FF2D16" opacity="0.4">
+                                    <circle cx={x} cy={y} r="3.5" fill="#FF296C" />
+                                    <circle cx={x} cy={y} r="3.5" fill="#FF296C" opacity="0.4">
                                         <animate attributeName="r" values="3.5;16;3.5" dur={`${2.4 + i * 0.4}s`} repeatCount="indefinite" />
                                         <animate attributeName="opacity" values="0.4;0;0.4" dur={`${2.4 + i * 0.4}s`} repeatCount="indefinite" />
                                     </circle>

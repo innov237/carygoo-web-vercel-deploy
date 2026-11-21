@@ -5,13 +5,13 @@ import { User, Mail, Phone, Building2, MessageSquare, ArrowRight, Loader2, Check
 // Données des témoignages
 const TESTIMONIALS = [
     {
-        quote: "Carygoo a aidé KFC Amérique Latine à livrer en moins de 30 minutes, transformant notre expérience client.",
+        quote: "Siara a aidé KFC Amérique Latine à livrer en moins de 30 minutes, transformant notre expérience client.",
         name: "Yasser Rodrigues",
         title: "Directeur mondial des opérations",
         company: "KFC Amérique Latine"
     },
     {
-        quote: "Nos revenus ont augmenté de 100% au cours des 12 premiers mois d'utilisation de Carygoo.",
+        quote: "Nos revenus ont augmenté de 100% au cours des 12 premiers mois d'utilisation de Siara.",
         name: "Omar Zebi",
         title: "Propriétaire de restaurant",
         company: "Hoboken, NJ"
@@ -104,7 +104,7 @@ const ContactPage: React.FC = () => {
                         Parlons de votre projet
                     </h2>
                     <p className="text-gray-500 mb-8">
-                        Décrivez-nous votre besoin, un membre de l&apos;équipe Carygoo vous recontacte rapidement.
+                        Décrivez-nous votre besoin, un membre de l&apos;équipe Siara vous recontacte rapidement.
                     </p>
 
                     {isSuccess ? (
@@ -135,7 +135,7 @@ const ContactPage: React.FC = () => {
                                         placeholder="Votre nom"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500 text-gray-900"
                                         required
                                     />
                                 </div>
@@ -151,7 +151,7 @@ const ContactPage: React.FC = () => {
                                         placeholder="Adresse e-mail"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500 text-gray-900"
                                         required
                                     />
                                 </div>
@@ -167,7 +167,7 @@ const ContactPage: React.FC = () => {
                                         placeholder="Numéro de téléphone (optionnel)"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500 text-gray-900"
                                     />
                                 </div>
                                 {fieldError("phone") && <p className="mt-1 text-xs text-red-600">{fieldError("phone")}</p>}
@@ -182,7 +182,7 @@ const ContactPage: React.FC = () => {
                                         placeholder="Nom de votre entreprise (optionnel)"
                                         value={company}
                                         onChange={(e) => setCompany(e.target.value)}
-                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900"
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500 text-gray-900"
                                     />
                                 </div>
                                 {fieldError("company") && <p className="mt-1 text-xs text-red-600">{fieldError("company")}</p>}
@@ -197,7 +197,7 @@ const ContactPage: React.FC = () => {
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
                                         rows={4}
-                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-gray-900 resize-none"
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500 text-gray-900 resize-none"
                                         required
                                     />
                                 </div>
@@ -208,7 +208,7 @@ const ContactPage: React.FC = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg text-lg transition duration-200 mt-8 disabled:opacity-60"
+                                className="w-full flex items-center justify-center bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-lg text-lg transition duration-200 mt-8 disabled:opacity-60"
                             >
                                 {isSubmitting ? (
                                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -237,7 +237,7 @@ const ContactPage: React.FC = () => {
                             </blockquote>
                             <p
                                 // Texte d'accentuation en rouge
-                                className="text-base sm:text-lg font-bold text-red-600 mb-1"
+                                className="text-base sm:text-lg font-bold text-brand-600 mb-1"
                             >
                                 {testimonial.name}
                             </p>
@@ -257,7 +257,7 @@ const ContactPage: React.FC = () => {
                                 <div
                                     key={index}
                                     // Indicateurs de couleur ajustée pour le fond clair
-                                    className={`h-2 w-2 rounded-full transition-all duration-300 ${index === currentTestimonial ? 'bg-red-600 w-6' : 'bg-gray-400'
+                                    className={`h-2 w-2 rounded-full transition-all duration-300 ${index === currentTestimonial ? 'bg-brand-600 w-6' : 'bg-gray-400'
                                         }`}
                                 />
                             ))}

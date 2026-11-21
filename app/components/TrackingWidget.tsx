@@ -112,7 +112,7 @@ export default function TrackingWidget() {
           placeholder="Numéro de suivi"
           value={trackingNumber}
           onChange={(e) => setTrackingNumber(e.target.value)}
-          className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900"
+          className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-gray-900"
           required
         />
         <input
@@ -120,12 +120,12 @@ export default function TrackingWidget() {
           placeholder="Code PIN (optionnel)"
           value={pinCode}
           onChange={(e) => setPinCode(e.target.value)}
-          className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-900"
+          className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-gray-900"
         />
         <button
           type="submit"
           disabled={isLoading}
-          className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-lg transition-colors disabled:opacity-60"
+          className="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-lg transition-colors disabled:opacity-60"
         >
           {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Search size={18} />}
           Suivre
@@ -169,10 +169,10 @@ export default function TrackingWidget() {
           >
             <div className="bg-gray-950 text-white px-5 py-4 flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2">
-                <PackageCheck size={18} className="text-red-500" />
+                <PackageCheck size={18} className="text-brand-500" />
                 <span className="font-mono text-sm">{result.tracking_number}</span>
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider bg-red-600 px-3 py-1 rounded-full">
+              <span className="text-xs font-bold uppercase tracking-wider bg-brand-600 px-3 py-1 rounded-full">
                 {STATUS_LABELS[result.status] || result.status}
               </span>
             </div>

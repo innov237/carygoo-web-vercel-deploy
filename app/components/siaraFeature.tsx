@@ -25,21 +25,21 @@ const FEATURES = [
   },
 ];
 
-const CarygooSimpleFeatures = () => {
+const SiaraSimpleFeatures = () => {
   return (
     <section className="py-24 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         
         {/* En-tête propre et centré */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <p className="text-sm font-bold uppercase text-red-600 tracking-widest mb-3">
+          <p className="text-sm font-bold uppercase text-brand-600 tracking-widest mb-3">
             Technologie & Performance
           </p>
           <h2 className="text-4xl font-extrabold text-gray-900 mb-6 tracking-tight sm:text-5xl">
-            Votre entreprise, propulsée par <span className="text-red-600">Carygoo AI</span>
+            Votre entreprise, propulsée par <span className="text-brand-600">Siara AI</span>
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Carygoo s'intègre parfaitement à vos systèmes de caisse et e-commerce. 
+            Siara s'intègre parfaitement à vos systèmes de caisse et e-commerce. 
             Profitez de tous les outils nécessaires pour gérer vos opérations et offrir une expérience client exceptionnelle.
           </p>
         </div>
@@ -49,10 +49,10 @@ const CarygooSimpleFeatures = () => {
           {FEATURES.map((feature, index) => (
             <div 
                 key={index} 
-                className="group flex flex-col items-start p-6 rounded-2xl border border-gray-200 bg-white hover:border-red-200 hover:shadow-xl transition-all duration-300"
+                className="group flex flex-col items-start p-6 rounded-2xl border border-gray-200 bg-white hover:border-brand-200 hover:shadow-xl transition-all duration-300"
             >
                 {/* Icône Carrée */}
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-red-50 text-red-600 transition-colors duration-300 group-hover:bg-red-600 group-hover:text-white">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
                     <feature.icon size={24} />
                 </div>
 
@@ -74,4 +74,4 @@ const CarygooSimpleFeatures = () => {
   );
 };
 
-export default CarygooSimpleFeatures;
+export default SiaraSimpleFeatures;

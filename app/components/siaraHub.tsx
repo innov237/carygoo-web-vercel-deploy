@@ -6,7 +6,7 @@ interface HubNodeProps {
 function HubNode({ name, className = "" }: HubNodeProps) {
     return (
         <div
-            className={`absolute z-[4] flex h-[6cqw] w-[18.75cqw] flex-col items-center justify-center gap-[0.25cqw] rounded-[1.25cqw] border-[1.5px] border-[#FF2D16] bg-[#141D30] ${className}`}
+            className={`absolute z-[4] flex h-[6cqw] w-[18.75cqw] flex-col items-center justify-center gap-[0.25cqw] rounded-[1.25cqw] border-[1.5px] border-[#FF296C] bg-[#141D30] ${className}`}
         >
             <b className="text-[1.5625cqw] font-extrabold tracking-[-0.03cqw] max-[700px]:text-[2cqw]">
                 {name}
@@ -18,7 +18,7 @@ function HubNode({ name, className = "" }: HubNodeProps) {
     );
 }
 
-export default function CarygooHub() {
+export default function SiaraHub() {
     return (
         <section className="relative mx-auto aspect-[1600/1240] w-full max-w-[1600px] overflow-hidden bg-[#EEF2FA] text-white [container-type:inline-size]">
             <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
@@ -32,13 +32,13 @@ export default function CarygooHub() {
 
             <div className="absolute top-[3cqw] left-0 right-0 z-[5] flex flex-col items-center gap-[0.75cqw] px-4">
                 <h2 className="m-0 text-balance text-center text-[3.5cqw] font-extrabold leading-[1.05] tracking-[-0.09cqw] text-[#0B0F1E] max-[700px]:text-[4.4cqw]">
-                    <span className="text-[#FF2D16]">Carygoo,</span> le hub qui connecte
+                    <span className="text-[#FF296C]">Siara,</span> le hub qui connecte
                     <br />
                     de milliers d'entreprises
                 </h2>
                 <p className="m-0 text-[1.5625cqw] font-semibold text-[#4B5468]">
                     Une seule plateforme. Plusieurs partenaires.{" "}
-                    <span className="text-[#FF2D16]">Zéro limite.</span>
+                    <span className="text-[#FF296C]">Zéro limite.</span>
                 </p>
             </div>
 
@@ -53,14 +53,14 @@ export default function CarygooHub() {
                     cy="740"
                     r="330"
                     fill="none"
-                    stroke="#FF2D16"
+                    stroke="#FF296C"
                     strokeWidth="1.5"
                     opacity="0.22"
                     strokeDasharray="4 10"
                 />
                 <g
                     className="animate-[cg-flow_6s_linear_infinite]"
-                    stroke="#FF2D16"
+                    stroke="#FF296C"
                     strokeWidth="2.5"
                     strokeDasharray="10 12"
                     fill="none"
@@ -75,12 +75,12 @@ export default function CarygooHub() {
                 </g>
             </svg>
 
-            <div className="absolute left-[40.625cqw] top-[36.875cqw] z-[4] flex h-[18.75cqw] w-[18.75cqw] flex-col items-center justify-center gap-[0.625cqw] rounded-full border-2 border-[#FF2D16] bg-[#05070F] shadow-[0_0_6cqw_rgba(255,45,22,0.5)]">
-                <div className="flex h-[4.125cqw] w-[4.125cqw] items-center justify-center rounded-[1.1cqw] bg-[#FF2D16] text-[2.125cqw] font-extrabold tracking-[-0.125cqw]">
+            <div className="absolute left-[40.625cqw] top-[36.875cqw] z-[4] flex h-[18.75cqw] w-[18.75cqw] flex-col items-center justify-center gap-[0.625cqw] rounded-full border-2 border-[#FF296C] bg-[#05070F] shadow-[0_0_6cqw_rgba(255,45,22,0.5)]">
+                <div className="flex h-[4.125cqw] w-[4.125cqw] items-center justify-center rounded-[1.1cqw] bg-[#FF296C] text-[2.125cqw] font-extrabold tracking-[-0.125cqw]">
                     go
                 </div>
                 <div className="text-[2.375cqw] font-extrabold leading-none tracking-[-0.0625cqw]">
-                    Carygoo
+                    Siara
                 </div>
                 <div className="text-[0.8125cqw] font-semibold uppercase tracking-[0.19cqw] text-[#6E7994]">
                     Hub de livraison

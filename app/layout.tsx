@@ -19,9 +19,9 @@ const bodyFont = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Carygoo — La plateforme de livraison tout-en-un",
+  title: "Siara — La super app de votre quotidien",
   description:
-    "Gérez vos livraisons, votre flotte, vos boutiques et votre réseau de points relais depuis une seule plateforme. API pour développeurs, paiements Mobile Money, rapports en temps réel.",
+    "Siara réunit VTC, livraison, services à domicile, restaurants et supermarché dans une seule application. Commandez, suivez en temps réel et payez en Mobile Money.",
 };
 
 export default function RootLayout({

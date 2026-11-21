@@ -5,16 +5,16 @@ export default function PrivacyPolicyPage() {
         <main className="min-h-screen bg-white text-gray-800 px-6 py-12 md:px-20">
             <div className="max-w-4xl mx-auto space-y-8">
                 <header className="space-y-2 mt-16">
-                    <h1 className="text-3xl md:text-4xl font-bold">Politique de confidentialité - Carygoo</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold">Politique de confidentialité - Siara</h1>
                     <p className="text-sm text-gray-500">Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}</p>
                 </header>
 
                 <section className="space-y-3">
                     <p>
-                        Carygoo accorde une importance capitale à la protection de vos données personnelles.
+                        Siara accorde une importance capitale à la protection de vos données personnelles.
                         Cette politique de confidentialité explique comment nous collectons, utilisons,
-                        stockons et protégeons vos informations lorsque vous utilisez nos services de mobilité
-                        et de transport.
+                        stockons et protégeons vos informations lorsque vous utilisez nos services (VTC, livraison,
+                        services à domicile, restaurants, supermarché).
                     </p>
                 </section>
 
@@ -32,8 +32,8 @@ export default function PrivacyPolicyPage() {
                     <h2 className="text-xl font-semibold">2. Utilisation des données</h2>
                     <p>Vos données sont utilisées pour :</p>
                     <ul className="list-disc pl-6 space-y-1">
-                        <li>Fournir et améliorer les services Carygoo</li>
-                        <li>Gérer les réservations, trajets et paiements</li>
+                        <li>Fournir et améliorer les services Siara</li>
+                        <li>Gérer les trajets, livraisons, commandes, réservations et paiements</li>
                         <li>Assurer la sécurité des utilisateurs et prévenir la fraude</li>
                         <li>Vous contacter pour des notifications importantes</li>
                     </ul>
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
                 <section className="space-y-3">
                     <h2 className="text-xl font-semibold">3. Partage des données</h2>
                     <p>
-                        Carygoo ne vend pas vos données personnelles. Certaines informations peuvent être
+                        Siara ne vend pas vos données personnelles. Certaines informations peuvent être
                         partagées avec des partenaires techniques ou prestataires de paiement uniquement
                         lorsque cela est nécessaire au fonctionnement du service.
                     </p>
@@ -70,7 +70,7 @@ export default function PrivacyPolicyPage() {
                 <section className="space-y-3">
                     <h2 className="text-xl font-semibold">6. Données de localisation</h2>
                     <p>
-                        Carygoo peut collecter des données de localisation en temps réel uniquement lorsque
+                        Siara peut collecter des données de localisation en temps réel uniquement lorsque
                         cela est nécessaire au bon déroulement des trajets. Vous pouvez désactiver cette
                         fonctionnalité à tout moment via les paramètres de votre appareil.
                     </p>
@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
                     <h2 className="text-xl font-semibold">7. Modifications</h2>
                     <p>
                         Cette politique de confidentialité peut être mise à jour. Toute modification
-                        importante sera notifiée via l’application ou le site Carygoo.
+                        importante sera notifiée via l’application ou le site Siara.
                     </p>
                 </section>
 

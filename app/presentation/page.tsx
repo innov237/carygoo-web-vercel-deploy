@@ -8,7 +8,7 @@ import { DECK_SECTIONS_HTML } from "./deck-content";
 // cette page est montée plutôt que de sortir cette route du layout racine.
 const HIDE_CHROME_CSS = `
   header, footer { display: none !important; }
-  html, body { background: #101418; }
+  html, body { background: #12062B; }
   deck-stage:not(:defined) { visibility: hidden; }
 `;
 

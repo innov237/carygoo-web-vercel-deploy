@@ -89,13 +89,13 @@ const ServiceCoverage: React.FC = () => {
     const prevPage = () => goToPage((currentPage - 1 + totalPages) % totalPages);
 
     return (
-        <section className="py-20 px-4 bg-gradient-to-b from-red-50 via-white to-gray-100 relative overflow-hidden">
+        <section className="py-20 px-4 bg-gradient-to-b from-brand-50 via-white to-gray-100 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Conteneur principal responsive */}
                 <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
                     {/* Titre et description */}
                     <div className="lg:w-2/4 text-center lg:text-left mb-8 lg:mb-0">
-                        <p className="text-sm font-medium uppercase text-red-500 tracking-wider mb-5">
+                        <p className="text-sm font-medium uppercase text-brand-500 tracking-wider mb-5">
                             Nos Services
                         </p>
                         <h2 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight sm:text-5xl">
@@ -128,7 +128,7 @@ const ServiceCoverage: React.FC = () => {
                                             onClick={() => goToPage(i)}
                                         >
                                             <motion.div
-                                                className="h-1 bg-red-500"
+                                                className="h-1 bg-brand-500"
                                                 animate={{ width: `${fill}%` }}
                                                 transition={{ duration: 0.2, ease: "linear" }}
                                             />
@@ -186,7 +186,7 @@ const ServiceCard: React.FC<{ service: Service; index: number }> = ({ service, i
             className="p-6 h-80 bg-white border border-gray-100 rounded-2xl shadow-sm 
                  hover:shadow-lg transition-all duration-300 group relative"
         >
-            <div className="absolute inset-0 bg-gradient-to-tr from-red-50 via-white to-transparent opacity-70 rounded-2xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand-50 via-white to-transparent opacity-70 rounded-2xl pointer-events-none" />
             <div className="flex items-center mb-4 relative z-10">
                 <h3 className="text-3xl font-bold text-gray-900">{service.title}</h3>
             </div>
@@ -204,8 +204,8 @@ const SliderButton: React.FC<{ onClick: () => void; icon: React.ReactNode }> = (
         className={`
       flex items-center justify-center
       h-10 w-10 rounded-full
-      bg-white text-red-600 border border-red-300
-      hover:bg-red-50 hover:border-red-400 active:bg-red-100
+      bg-white text-brand-600 border border-brand-300
+      hover:bg-brand-50 hover:border-brand-400 active:bg-brand-100
       shadow-sm transition duration-300
     `}
     >

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { KeyRound, Truck, MapPin, MapPinned, Webhook, Coins, Wallet } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "API Partenaire | Carygoo",
+  title: "API Partenaire | Siara",
   description:
-    "Documentation développeur de l'API Partenaire Carygoo : authentification, création de livraisons, attribution automatique du livreur, webhooks et facturation.",
+    "Documentation développeur de l'API Partenaire Siara : authentification, création de livraisons, attribution automatique du livreur, webhooks et facturation.",
 };
 
 const NAV = [
@@ -47,7 +47,7 @@ function CodeBlock({ children }: { children: React.ReactNode }) {
 }
 
 function K({ children }: { children: React.ReactNode }) {
-  return <span className="text-rose-400">{children}</span>;
+  return <span className="text-coral-400">{children}</span>;
 }
 function S({ children }: { children: React.ReactNode }) {
   return <span className="text-emerald-400">{children}</span>;
@@ -61,7 +61,7 @@ function Endpoint({ method, path }: { method: "GET" | "POST"; path: string }) {
     <div className="inline-flex items-center gap-3 bg-white border border-gray-200 rounded-lg px-4 py-2 mb-5 shadow-sm">
       <span
         className={`text-xs font-bold px-2 py-0.5 rounded ${
-          method === "GET" ? "bg-red-50 text-red-700" : "bg-emerald-50 text-emerald-700"
+          method === "GET" ? "bg-brand-50 text-brand-700" : "bg-emerald-50 text-emerald-700"
         }`}
       >
         {method}
@@ -73,7 +73,7 @@ function Endpoint({ method, path }: { method: "GET" | "POST"; path: string }) {
 
 function InlineCode({ children }: { children: React.ReactNode }) {
   return (
-    <code className="bg-red-50 text-red-700 rounded px-1.5 py-0.5 text-[0.87em] font-mono">
+    <code className="bg-brand-50 text-brand-700 rounded px-1.5 py-0.5 text-[0.87em] font-mono">
       {children}
     </code>
   );
@@ -87,14 +87,14 @@ export default async function PartnerApiDocsPage() {
       {/* Hero */}
       <section className="border-b border-gray-200 bg-gray-50 px-4 py-14">
         <div className="max-w-screen-xl mx-auto">
-          <p className="text-sm font-semibold text-red-600 tracking-wide uppercase mb-3">
+          <p className="text-sm font-semibold text-brand-600 tracking-wide uppercase mb-3">
             API Partenaire · Référence v1
           </p>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 max-w-3xl leading-tight">
             Créez des livraisons directement depuis votre système
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl">
-            Envoyez un point de retrait et une destination : Carygoo calcule le prix à partir de la
+            Envoyez un point de retrait et une destination : Siara calcule le prix à partir de la
             distance réelle, attribue un livreur automatiquement, et vous tient informé en temps réel
             par webhook.
           </p>
@@ -112,7 +112,7 @@ export default async function PartnerApiDocsPage() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="block text-sm text-gray-600 hover:text-red-600 py-1.5 transition-colors"
+                  className="block text-sm text-gray-600 hover:text-brand-600 py-1.5 transition-colors"
                 >
                   {item.label}
                 </a>
@@ -127,7 +127,7 @@ export default async function PartnerApiDocsPage() {
           <ul className="px-4 pb-4 space-y-1">
             {NAV.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="block text-sm text-gray-600 hover:text-red-600 py-1">
+                <a href={item.href} className="block text-sm text-gray-600 hover:text-brand-600 py-1">
                   {item.label}
                 </a>
               </li>
@@ -139,7 +139,7 @@ export default async function PartnerApiDocsPage() {
         <main className="flex-1 min-w-0 py-12 lg:pl-10 lg:border-l lg:border-gray-100 max-w-2xl">
           <section id="auth" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <KeyRound className="w-5 h-5 text-red-600" />
+              <KeyRound className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">Authentification</h2>
             </div>
             <p className="text-gray-600 mb-6">
@@ -177,9 +177,9 @@ export default async function PartnerApiDocsPage() {
             </div>
 
             <p className="text-gray-600 mb-6">
-              Ces identifiants se génèrent depuis votre tableau de bord Carygoo, section{" "}
+              Ces identifiants se génèrent depuis votre tableau de bord Siara, section{" "}
               <strong>Intégration API</strong>. Le secret n&apos;est affiché qu&apos;une seule fois, au
-              moment de la génération — Carygoo ne le stocke jamais en clair et ne peut pas vous le
+              moment de la génération — Siara ne le stocke jamais en clair et ne peut pas vous le
               redonner.
             </p>
 
@@ -213,13 +213,13 @@ export default async function PartnerApiDocsPage() {
 
           <section id="vehicle-types" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <Truck className="w-5 h-5 text-red-600" />
+              <Truck className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">Types de véhicule</h2>
             </div>
             <Endpoint method="GET" path="/partner-api/v1/vehicle-types" />
             <p className="text-gray-600 mb-6">
               Chaque type porte sa propre grille tarifaire, non exposée ici — le prix final est
-              toujours calculé par Carygoo à la création de la livraison.
+              toujours calculé par Siara à la création de la livraison.
             </p>
             <CodeBlock>
               {"{"}
@@ -240,13 +240,13 @@ export default async function PartnerApiDocsPage() {
 
           <section id="places" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <MapPin className="w-5 h-5 text-red-600" />
+              <MapPin className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">
                 Recherche d&apos;adresse <span className="text-base font-medium text-gray-400">(optionnel)</span>
               </h2>
             </div>
             <p className="text-gray-600 mb-6">
-              Pas besoin de gérer votre propre clé Google Maps : Carygoo propose, <strong>par défaut</strong>, un
+              Pas besoin de gérer votre propre clé Google Maps : Siara propose, <strong>par défaut</strong>, un
               proxy vers Google Place Autocomplete. Facultatif — vous pouvez continuer à résoudre vos adresses de
               votre côté et envoyer directement des coordonnées à la création de livraison.
             </p>
@@ -281,7 +281,7 @@ export default async function PartnerApiDocsPage() {
             </CodeBlock>
             <p className="text-gray-600">
               <strong>Facturé</strong> (action <InlineCode>place_lookup</InlineCode>, cf.{" "}
-              <a href="#billing" className="text-red-600 hover:underline">
+              <a href="#billing" className="text-brand-600 hover:underline">
                 section 8
               </a>
               ) — c&apos;est cet appel qui clôt la session et engage un coût réel, jamais{" "}
@@ -309,58 +309,58 @@ export default async function PartnerApiDocsPage() {
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>pickup.address</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">string</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Adresse texte du point de retrait</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>pickup.lat</InlineCode> / <InlineCode>pickup.lng</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">number</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Coordonnées du point de retrait</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>pickup.contact_name</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">string</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Nom à contacter au retrait</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>pickup.contact_phone</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">string</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Téléphone à contacter au retrait</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>dropoff.address</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">string</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Adresse texte de la destination</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>dropoff.lat</InlineCode> / <InlineCode>dropoff.lng</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">number</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Coordonnées de la destination</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>dropoff.contact_name</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">string</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Nom du destinataire</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>dropoff.contact_phone</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">string</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">Téléphone du destinataire</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 pr-4"><InlineCode>category_id</InlineCode></td>
                     <td className="py-2.5 pr-4 text-gray-500">integer</td>
-                    <td className="py-2.5 pr-4 font-semibold text-red-600">Oui</td>
+                    <td className="py-2.5 pr-4 font-semibold text-brand-600">Oui</td>
                     <td className="py-2.5 text-gray-600">
                       Type de véhicule/colis — voir{" "}
-                      <a href="#vehicle-types" className="text-red-600 hover:underline">section 2</a>
+                      <a href="#vehicle-types" className="text-brand-600 hover:underline">section 2</a>
                     </td>
                   </tr>
                   <tr>
@@ -460,7 +460,7 @@ export default async function PartnerApiDocsPage() {
                     </td>
                     <td className="py-3 text-gray-600">
                       Solde du portefeuille API insuffisant — voir{" "}
-                      <a href="#billing" className="text-red-600 hover:underline">
+                      <a href="#billing" className="text-brand-600 hover:underline">
                         section 8
                       </a>
                     </td>
@@ -488,11 +488,11 @@ export default async function PartnerApiDocsPage() {
 
           <section id="matching" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <MapPinned className="w-5 h-5 text-red-600" />
+              <MapPinned className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">Attribution du livreur</h2>
             </div>
             <p className="text-gray-600 mb-6">
-              À la création, Carygoo cherche un livreur disponible en deux temps :
+              À la création, Siara cherche un livreur disponible en deux temps :
             </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-6">
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
@@ -503,10 +503,10 @@ export default async function PartnerApiDocsPage() {
                 </p>
               </div>
               <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
-                <p className="font-bold mb-1">2 · Pool global Carygoo</p>
+                <p className="font-bold mb-1">2 · Pool global Siara</p>
                 <p className="text-sm text-gray-600">
                   Si aucun de vos chauffeurs n&apos;est libre, bascule automatique sur le réseau
-                  Carygoo — sauf si désactivé.
+                  Siara — sauf si désactivé.
                 </p>
               </div>
             </div>
@@ -516,7 +516,7 @@ export default async function PartnerApiDocsPage() {
             </p>
             <p className="text-gray-600">
               Si aucun livreur n&apos;est trouvé immédiatement, la livraison passe au statut{" "}
-              <InlineCode>no_driver_found</InlineCode> et Carygoo continue de chercher automatiquement
+              <InlineCode>no_driver_found</InlineCode> et Siara continue de chercher automatiquement
               (tentatives espacées de 30s à 5min) — vous êtes notifié par webhook dès qu&apos;un
               livreur est trouvé.
             </p>
@@ -586,12 +586,12 @@ export default async function PartnerApiDocsPage() {
 
           <section id="webhooks" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <Webhook className="w-5 h-5 text-red-600" />
+              <Webhook className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">Webhooks</h2>
             </div>
             <p className="text-gray-600 mb-6">
               Configurez une URL de callback depuis votre tableau de bord (section{" "}
-              <strong>Intégration API</strong>). Carygoo y envoie un <InlineCode>POST</InlineCode> JSON
+              <strong>Intégration API</strong>). Siara y envoie un <InlineCode>POST</InlineCode> JSON
               à chaque événement.
             </p>
 
@@ -642,9 +642,9 @@ export default async function PartnerApiDocsPage() {
 
             <h3 className="font-bold text-lg mb-2">Vérifier la signature</h3>
             <p className="text-gray-600 mb-6">
-              Chaque requête inclut <InlineCode>X-Carygoo-Event</InlineCode>,{" "}
-              <InlineCode>X-Carygoo-Timestamp</InlineCode> et{" "}
-              <InlineCode>X-Carygoo-Signature</InlineCode> — un HMAC-SHA256 de{" "}
+              Chaque requête inclut <InlineCode>X-Siara-Event</InlineCode>,{" "}
+              <InlineCode>X-Siara-Timestamp</InlineCode> et{" "}
+              <InlineCode>X-Siara-Signature</InlineCode> — un HMAC-SHA256 de{" "}
               <InlineCode>timestamp + &quot;.&quot; + corps_brut</InlineCode> avec votre{" "}
               <InlineCode>webhook_secret</InlineCode> (affiché une seule fois, comme votre{" "}
               <InlineCode>api_secret</InlineCode>).
@@ -679,7 +679,7 @@ export default async function PartnerApiDocsPage() {
             <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-4">
               <p className="font-semibold text-emerald-700 mb-1">Accusé de réception</p>
               <p className="text-sm text-emerald-700/80">
-                Répondez <InlineCode>2xx</InlineCode> sous 10s. En cas d&apos;échec, Carygoo retente
+                Répondez <InlineCode>2xx</InlineCode> sous 10s. En cas d&apos;échec, Siara retente
                 jusqu&apos;à 5 fois (10s, 30s, 1min, 5min, 15min). L&apos;historique de tous les envois est
                 consultable depuis votre tableau de bord.
               </p>
@@ -688,13 +688,13 @@ export default async function PartnerApiDocsPage() {
 
           <section id="billing" className="mb-16 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <Wallet className="w-5 h-5 text-red-600" />
+              <Wallet className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">Portefeuille API</h2>
             </div>
             <p className="text-gray-600 mb-6">
-              L&apos;usage de l&apos;API a un coût réel pour Carygoo (Google Distance Matrix à chaque livraison,
+              L&apos;usage de l&apos;API a un coût réel pour Siara (Google Distance Matrix à chaque livraison,
               Google Places si vous utilisez la{" "}
-              <a href="#places" className="text-red-600 hover:underline">
+              <a href="#places" className="text-brand-600 hover:underline">
                 recherche d&apos;adresse
               </a>
               , infrastructure) — distinct du prix de la livraison elle-même, qui rémunère le livreur.
@@ -762,14 +762,14 @@ export default async function PartnerApiDocsPage() {
             <p className="text-gray-600">
               Rechargez votre portefeuille en Mobile Money (MTN/Orange, via Dohone — le même moyen déjà utilisé pour
               votre abonnement) depuis votre tableau de bord. Un solde négatif (dette) est toléré jusqu&apos;à un
-              plafond défini par Carygoo — au-delà, l&apos;API renvoie{" "}
+              plafond défini par Siara — au-delà, l&apos;API renvoie{" "}
               <InlineCode>402 insufficient_wallet_balance</InlineCode> jusqu&apos;à recharge.
             </p>
           </section>
 
           <section id="currency" className="mb-8 scroll-mt-24">
             <div className="flex items-center gap-2 mb-2">
-              <Coins className="w-5 h-5 text-red-600" />
+              <Coins className="w-5 h-5 text-brand-600" />
               <h2 className="text-2xl font-extrabold">Devise</h2>
             </div>
             <p className="text-gray-600">

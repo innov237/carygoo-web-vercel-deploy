@@ -8,8 +8,30 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
-  --color-brand: #dc2626;
-  --color-brand-dark: #b91c1c;
+  /* Charte Siara : violet #5903DB (principal) + rose #FF296C (accent). */
+  --color-brand: #5903DB;
+  --color-brand-dark: #4A02B8;
+  --color-brand-50: #F3EEFE;
+  --color-brand-100: #E6DBFD;
+  --color-brand-200: #CDB6FB;
+  --color-brand-300: #AC85F7;
+  --color-brand-400: #8A4FF0;
+  --color-brand-500: #6F1FE6;
+  --color-brand-600: #5903DB;
+  --color-brand-700: #4A02B8;
+  --color-brand-800: #3C0294;
+  --color-brand-900: #2E0273;
+  --color-brand-950: #1C0147;
+  --color-coral-50: #FFF0F4;
+  --color-coral-100: #FFDDE6;
+  --color-coral-200: #FFBACD;
+  --color-coral-300: #FF8AAA;
+  --color-coral-400: #FF5A88;
+  --color-coral-500: #FF296C;
+  --color-coral-600: #E8155A;
+  --color-coral-700: #C20D4A;
+  --color-coral-800: #9C0C3D;
+  --color-coral-900: #7A0B31;
   --color-ink: #0a0a0a;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -161,8 +183,21 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* navbar fixe */
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: #5903DB;
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);

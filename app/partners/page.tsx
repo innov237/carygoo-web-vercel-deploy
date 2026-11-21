@@ -83,7 +83,7 @@ export default function PartnersPage() {
           className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-balance"
         >
           Gérez toutes vos livraisons{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-800">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-brand-800">
             depuis une seule plateforme
           </span>
         </motion.h1>
@@ -93,7 +93,7 @@ export default function PartnersPage() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
         >
-          Flotte, dispatch, boutiques, réseau de points relais, API et paiements — Carygoo centralise toute la
+          Flotte, dispatch, boutiques, réseau de points relais, API et paiements — Siara centralise toute la
           logistique de votre entreprise.
         </motion.p>
         <motion.div
@@ -104,13 +104,13 @@ export default function PartnersPage() {
         >
           <a
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-red-600/20"
+            className="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-brand-600/20"
           >
             Nous contacter <ArrowRight size={18} />
           </a>
           <a
             href="/pricing"
-            className="inline-flex items-center justify-center border border-gray-300 hover:border-red-600 text-gray-700 hover:text-red-600 font-medium py-3 px-8 rounded-xl text-lg transition-all duration-200"
+            className="inline-flex items-center justify-center border border-gray-300 hover:border-brand-600 text-gray-700 hover:text-brand-600 font-medium py-3 px-8 rounded-xl text-lg transition-all duration-200"
           >
             Voir les tarifs
           </a>
@@ -126,7 +126,7 @@ export default function PartnersPage() {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold text-center mb-16 text-balance"
         >
-          Tout ce qu&apos;il faut pour <span className="text-red-500">piloter votre activité</span>
+          Tout ce qu&apos;il faut pour <span className="text-brand-500">piloter votre activité</span>
         </motion.h2>
         <motion.div
           variants={stagger}
@@ -140,9 +140,9 @@ export default function PartnersPage() {
               key={feature.title}
               variants={fadeUp}
               whileHover={{ y: -6 }}
-              className="bg-gray-900 p-7 rounded-2xl border-t-4 border-red-600 shadow-2xl"
+              className="bg-gray-900 p-7 rounded-2xl border-t-4 border-brand-600 shadow-2xl"
             >
-              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mb-5">
+              <div className="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center mb-5">
                 <feature.icon className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-lg font-bold mb-3 text-white">{feature.title}</h3>
@@ -161,10 +161,10 @@ export default function PartnersPage() {
           transition={{ duration: 0.6 }}
           className="text-4xl font-bold text-center mb-4 text-gray-900 text-balance"
         >
-          Étendez votre <span className="text-red-600">réseau</span>
+          Étendez votre <span className="text-brand-600">réseau</span>
         </motion.h2>
         <p className="text-center text-gray-600 max-w-xl mx-auto mb-16">
-          Au-delà de la gestion de flotte, connectez votre activité à l&apos;écosystème Carygoo.
+          Au-delà de la gestion de flotte, connectez votre activité à l&apos;écosystème Siara.
         </p>
         <motion.div
           variants={stagger}
@@ -179,14 +179,14 @@ export default function PartnersPage() {
               href={item.href}
               variants={fadeUp}
               whileHover={{ y: -6 }}
-              className="group bg-white p-7 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-200 transition-shadow duration-300 flex flex-col"
+              className="group bg-white p-7 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-brand-200 transition-shadow duration-300 flex flex-col"
             >
-              <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-5 group-hover:bg-red-600 transition-colors duration-300">
-                <item.icon className="w-6 h-6 text-red-600 group-hover:text-white transition-colors duration-300" />
+              <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 group-hover:bg-brand-600 transition-colors duration-300">
+                <item.icon className="w-6 h-6 text-brand-600 group-hover:text-white transition-colors duration-300" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">{item.description}</p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-600">
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
                 Découvrir
                 <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </span>
@@ -204,7 +204,7 @@ export default function PartnersPage() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 text-balance"
         >
-          Prêt à simplifier vos <span className="text-red-600">livraisons</span> ?
+          Prêt à simplifier vos <span className="text-brand-600">livraisons</span> ?
         </motion.h2>
         <p className="text-xl text-gray-600 mb-8">
           Parlons de votre activité et trouvons l&apos;offre qui vous correspond.
@@ -212,13 +212,13 @@ export default function PartnersPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-lg"
           >
             Nous contacter <ArrowRight size={18} />
           </a>
           <a
             href="/pricing"
-            className="inline-flex items-center justify-center border border-gray-300 hover:border-red-600 text-gray-700 hover:text-red-600 font-medium py-3 px-8 rounded-xl text-lg transition-all duration-200"
+            className="inline-flex items-center justify-center border border-gray-300 hover:border-brand-600 text-gray-700 hover:text-brand-600 font-medium py-3 px-8 rounded-xl text-lg transition-all duration-200"
           >
             Voir les tarifs
           </a>

@@ -34,7 +34,7 @@ export default async function PricingPage() {
       <section className="py-20 md:py-28 text-center max-w-3xl mx-auto px-4">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
           <span className="text-gray-900">Des tarifs </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-800">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-brand-800">
             simples et transparents
           </span>
         </h1>
@@ -64,7 +64,7 @@ export default async function PricingPage() {
                   }`}
                 >
                   {isFeatured && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
                       Le plus populaire
                     </span>
                   )}
@@ -80,16 +80,16 @@ export default async function PricingPage() {
 
                   <ul className="space-y-3 mb-8 flex-1">
                     <li className="flex items-start gap-2 text-sm">
-                      <CircleCheck size={16} className="text-red-500 mt-0.5 shrink-0" />
+                      <CircleCheck size={16} className="text-brand-500 mt-0.5 shrink-0" />
                       <span>{plan.dispatches_included.toLocaleString("fr-FR")} livraisons incluses</span>
                     </li>
                     <li className="flex items-start gap-2 text-sm">
-                      <CircleCheck size={16} className="text-red-500 mt-0.5 shrink-0" />
+                      <CircleCheck size={16} className="text-brand-500 mt-0.5 shrink-0" />
                       <span>{formatFcfa(plan.price_per_extra_dispatch)} par livraison au-delà du quota</span>
                     </li>
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-sm">
-                        <CircleCheck size={16} className="text-red-500 mt-0.5 shrink-0" />
+                        <CircleCheck size={16} className="text-brand-500 mt-0.5 shrink-0" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -99,7 +99,7 @@ export default async function PricingPage() {
                     href="/contact"
                     className={`w-full text-center font-bold py-3 rounded-xl transition-colors ${
                       isFeatured
-                        ? "bg-red-600 hover:bg-red-700 text-white"
+                        ? "bg-brand-600 hover:bg-brand-700 text-white"
                         : "bg-gray-900 hover:bg-black text-white"
                     }`}
                   >
@@ -113,7 +113,7 @@ export default async function PricingPage() {
 
         <p className="text-center text-sm text-gray-500 mt-12">
           Tous les tarifs sont exprimés en Francs CFA (XAF). Besoin d&apos;une offre sur mesure ?{" "}
-          <a href="/contact" className="text-red-600 font-semibold hover:underline">
+          <a href="/contact" className="text-brand-600 font-semibold hover:underline">
             Contactez-nous
           </a>
           .

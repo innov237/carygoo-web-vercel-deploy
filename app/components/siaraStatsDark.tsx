@@ -65,7 +65,7 @@ const FLOATING_IMAGES = [
   { position: { top: "50%", right: "5%" }, src: "https://cdn.prod.website-files.com/62428b049409c6b74b6b6636/65b820af1c46647c8f31daed_bussines-letter-compress.avif", hideOnMobile: true }, 
 ];
 
-const CarygooStatsShipdayStyle = () => {
+const SiaraStatsShipdayStyle = () => {
   return (
     <section 
       // Style Shipday: min-h-screen (hauteur viewport) et fond noir
@@ -109,7 +109,7 @@ const CarygooStatsShipdayStyle = () => {
         
         {/* Titre (Gros Caractères, Contrasté) */}
         <h2 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-16 md:mb-24 max-w-4xl mx-auto leading-tight drop-shadow-2xl">
-          Les entreprises gèrent leurs livraisons locales sur <span className="text-red-600">Carygoo</span>.
+          Les entreprises gèrent leurs livraisons locales sur <span className="text-brand-600">Siara</span>.
         </h2>
 
         {/* Grille de Stats */}
@@ -119,7 +119,7 @@ const CarygooStatsShipdayStyle = () => {
               {/* Valeur (Dégradé Rouge Lumineux, comme les chiffres mis en avant chez Shipday) */}
               <span 
                 className={`text-5xl md:text-7xl font-extrabold mb-3 drop-shadow-lg
-                  bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600
+                  bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-brand-600
                 `}
               >
                 <CountUpStat value={stat.value} />
@@ -138,4 +138,4 @@ const CarygooStatsShipdayStyle = () => {
   );
 };
 
-export default CarygooStatsShipdayStyle;
+export default SiaraStatsShipdayStyle;

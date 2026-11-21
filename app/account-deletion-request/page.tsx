@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import DeletionRequestForm from "./deletion-request-form";
 
 export const metadata: Metadata = {
-    title: "Demande de suppression de compte — Carygoo",
+    title: "Demande de suppression de compte — Siara",
     description:
-        "Demandez la suppression de votre compte Carygoo et des données associées. Procédure, données supprimées et délais de conservation.",
+        "Demandez la suppression de votre compte Siara et des données associées. Procédure, données supprimées et délais de conservation.",
 };
 
 // Page publique exigée par Google Play (Data safety → Account deletion URL).
@@ -14,18 +14,20 @@ export default function AccountDeletionRequestPage() {
     return (
         <main className="min-h-screen bg-white text-gray-800 px-6 py-12 md:px-20">
             <div className="max-w-4xl mx-auto space-y-10">
-                <header className="space-y-2 mt-16">
-                    <h1 className="text-3xl md:text-4xl font-bold">Demande de suppression de compte</h1>
-                    <p className="text-gray-500">
-                        Application <strong>Carygoo</strong>, éditée par Carygoo. Cette page vous permet de demander
-                        la suppression de votre compte et des données personnelles associées.
+                <header className="space-y-4 mt-16">
+                    <img src="/images/siara-logo.png" alt="Siara" className="h-12 w-auto" />
+                    <h1 className="text-3xl md:text-4xl font-bold">Demande de suppression de compte Siara</h1>
+                    <p className="text-gray-600">
+                        Cette page concerne l&apos;application mobile <strong>Siara</strong> (anciennement Carygoo),
+                        disponible sur Google Play et l&apos;App Store. Elle vous permet de demander la suppression de
+                        votre compte Siara et des données personnelles associées.
                     </p>
                 </header>
 
                 <section className="space-y-3">
-                    <h2 className="text-xl font-semibold">1. Depuis l&apos;application mobile</h2>
+                    <h2 className="text-xl font-semibold">1. Depuis l&apos;application Siara</h2>
                     <ol className="list-decimal pl-6 space-y-1">
-                        <li>Ouvrez l&apos;application Carygoo et connectez-vous.</li>
+                        <li>Ouvrez l&apos;application Siara et connectez-vous.</li>
                         <li>Allez dans <strong>Mon compte</strong> (modifier le profil).</li>
                         <li>Appuyez sur <strong>Supprimer mon compte</strong>.</li>
                         <li>Confirmez la suppression dans la fenêtre qui s&apos;affiche.</li>
@@ -51,7 +53,8 @@ export default function AccountDeletionRequestPage() {
                     <ul className="list-disc pl-6 space-y-1">
                         <li>Informations d&apos;identification : nom, prénom, e-mail, numéro de téléphone, photo</li>
                         <li>Identifiants de connexion et jetons d&apos;authentification</li>
-                        <li>Historique des courses et livraisons, adresses enregistrées</li>
+                        <li>Historique des trajets VTC, livraisons, commandes (restaurants, supermarché) et réservations de services à domicile</li>
+                        <li>Adresses enregistrées et moyens de paiement associés au compte</li>
                         <li>Données de localisation liées à votre compte</li>
                         <li>Préférences et jetons de notification</li>
                     </ul>

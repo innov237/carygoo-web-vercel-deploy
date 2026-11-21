@@ -10,7 +10,7 @@ const STEPS = [
   {
     icon: Package,
     title: "1. Déposez votre colis",
-    description: "Dans une agence Carygoo ou un point relais partenaire, avec le type de colis et le mode de livraison souhaité.",
+    description: "Dans une agence Siara ou un point relais partenaire, avec le type de colis et le mode de livraison souhaité.",
   },
   {
     icon: Truck,
@@ -43,7 +43,7 @@ export default function RelayPointsPage() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3"
+            className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3"
           >
             Réseau de points relais
           </motion.p>
@@ -54,7 +54,7 @@ export default function RelayPointsPage() {
             className="text-4xl md:text-6xl font-bold mb-5 text-balance"
           >
             Envoyez un colis entre villes,{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-800">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-brand-800">
               retirez-le où vous voulez
             </span>
           </motion.h1>
@@ -74,7 +74,7 @@ export default function RelayPointsPage() {
       <section className="py-16 md:py-20 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-2 justify-center mb-2">
-            <PackageSearch className="w-5 h-5 text-red-600" />
+            <PackageSearch className="w-5 h-5 text-brand-600" />
             <h2 className="text-2xl font-bold">Suivre un colis</h2>
           </div>
           <p className="text-center text-gray-600 mb-8">
@@ -89,7 +89,7 @@ export default function RelayPointsPage() {
       <section className="py-16 md:py-20 px-4 bg-gray-50">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-2 justify-center mb-2">
-            <Building2 className="w-5 h-5 text-red-600" />
+            <Building2 className="w-5 h-5 text-brand-600" />
             <h2 className="text-2xl font-bold">Trouver un point relais</h2>
           </div>
           <p className="text-center text-gray-600 mb-8">
@@ -107,7 +107,7 @@ export default function RelayPointsPage() {
           viewport={{ once: true, amount: 0.4 }}
           className="text-4xl font-bold text-center mb-16 text-balance"
         >
-          Comment ça <span className="text-red-500">marche</span>
+          Comment ça <span className="text-brand-500">marche</span>
         </motion.h2>
         <motion.div
           variants={stagger}
@@ -117,8 +117,8 @@ export default function RelayPointsPage() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
         >
           {STEPS.map((step) => (
-            <motion.div key={step.title} variants={fadeUp} className="bg-gray-900 p-7 rounded-2xl border-t-4 border-red-600">
-              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mb-5">
+            <motion.div key={step.title} variants={fadeUp} className="bg-gray-900 p-7 rounded-2xl border-t-4 border-brand-600">
+              <div className="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center mb-5">
                 <step.icon className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-lg font-bold mb-3">{step.title}</h3>
@@ -134,10 +134,10 @@ export default function RelayPointsPage() {
           className="flex flex-wrap justify-center gap-8 mt-16 text-sm text-gray-400"
         >
           <div className="flex items-center gap-2">
-            <ShieldCheck size={16} className="text-red-500" /> Colis fragiles, périssables et documents pris en charge
+            <ShieldCheck size={16} className="text-brand-500" /> Colis fragiles, périssables et documents pris en charge
           </div>
           <div className="flex items-center gap-2">
-            <Clock3 size={16} className="text-red-500" /> Horaires de départ et délai estimé par trajet
+            <Clock3 size={16} className="text-brand-500" /> Horaires de départ et délai estimé par trajet
           </div>
         </motion.div>
       </section>
@@ -150,15 +150,15 @@ export default function RelayPointsPage() {
           viewport={{ once: true, amount: 0.4 }}
           className="text-4xl font-bold mb-4 text-balance"
         >
-          Devenez <span className="text-red-600">point relais</span>
+          Devenez <span className="text-brand-600">point relais</span>
         </motion.h2>
         <p className="text-lg text-gray-600 mb-8">
-          Vous avez une boutique ou un local accessible ? Rejoignez le réseau Carygoo et générez un revenu
+          Vous avez une boutique ou un local accessible ? Rejoignez le réseau Siara et générez un revenu
           complémentaire en accueillant les dépôts et retraits de colis.
         </p>
         <a
           href="/contact"
-          className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-lg"
+          className="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-8 rounded-xl text-lg transition-all duration-200 shadow-md hover:shadow-lg"
         >
           Nous contacter <ArrowRight size={18} />
         </a>
